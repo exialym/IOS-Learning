@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Pic"; ObjectID = "2Ck-9W-pGM"; */
+"2Ck-9W-pGM.normalTitle" = "Pic";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "Tgh-ax-qSS"; */
+"Tgh-ax-qSS.title" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Del"; ObjectID = "V23-x0-w7a"; */
+"V23-x0-w7a.normalTitle" = "Del";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "aMw-zo-10e"; */
+"aMw-zo-10e.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Edit GPS Point"; ObjectID = "bKk-eM-wAN"; */
+"bKk-eM-wAN.title" = "Edit GPS Point";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "fz1-H6-Ad7"; */
+"fz1-H6-Ad7.title" = "Item";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "qMc-o3-mF5"; */
+"qMc-o3-mF5.text" = "Info";

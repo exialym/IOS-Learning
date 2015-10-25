@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Name"; ObjectID = "3i4-4V-Edh"; */
+"3i4-4V-Edh.text" = "用户名";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "18b-Lg-EGS"; */
+"18b-Lg-EGS.text" = "用户名";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "CRa-Ve-k4y"; */
+"CRa-Ve-k4y.normalTitle" = "登陆";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "Ekg-Dp-ebH"; */
+"Ekg-Dp-ebH.text" = "密码";
+
+/* Class = "UIButton"; normalTitle = "Change Security"; ObjectID = "bdm-BV-g61"; */
+"bdm-BV-g61.normalTitle" = "改变安全性";
+
+/* Class = "UILabel"; text = "Company"; ObjectID = "zk2-f2-90m"; */
+"zk2-f2-90m.text" = "公司";
+

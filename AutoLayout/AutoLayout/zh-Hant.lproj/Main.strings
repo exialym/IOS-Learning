@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "18b-Lg-EGS"; */
+"18b-Lg-EGS.text" = "Username";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "3i4-4V-Edh"; */
+"3i4-4V-Edh.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "CRa-Ve-k4y"; */
+"CRa-Ve-k4y.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "Ekg-Dp-ebH"; */
+"Ekg-Dp-ebH.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Change Security"; ObjectID = "bdm-BV-g61"; */
+"bdm-BV-g61.normalTitle" = "Change Security";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oj1-Bj-DCa"; */
+"oj1-Bj-DCa.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Company"; ObjectID = "zk2-f2-90m"; */
+"zk2-f2-90m.text" = "Company";

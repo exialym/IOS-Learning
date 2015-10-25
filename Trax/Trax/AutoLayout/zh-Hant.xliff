@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="AutoLayout/Base.lproj/LaunchScreen.xib" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="8ie-xW-0ye.text">
+        <source>  Copyright (c) 2015年 exialym. All rights reserved.</source>
+        <target>  Copyright (c) 2015年 exialym. All rights reserved.</target>
+        <note>Class = "UILabel"; text = "  Copyright (c) 2015年 exialym. All rights reserved."; ObjectID = "8ie-xW-0ye";</note>
+      </trans-unit>
+      <trans-unit id="kId-c2-rCX.text">
+        <source>AutoLayout</source>
+        <target>AutoLayout</target>
+        <note>Class = "UILabel"; text = "AutoLayout"; ObjectID = "kId-c2-rCX";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AutoLayout/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="3i4-4V-Edh.text">
+        <source>Name</source>
+        <target>Name</target>
+        <note>Class = "UILabel"; text = "Name"; ObjectID = "3i4-4V-Edh";</note>
+      </trans-unit>
+      <trans-unit id="18b-Lg-EGS.text">
+        <source>Username</source>
+        <target>Username</target>
+        <note>Class = "UILabel"; text = "Username"; ObjectID = "18b-Lg-EGS";</note>
+      </trans-unit>
+      <trans-unit id="CRa-Ve-k4y.normalTitle">
+        <source>Login</source>
+        <target>Login</target>
+        <note>Class = "UIButton"; normalTitle = "Login"; ObjectID = "CRa-Ve-k4y";</note>
+      </trans-unit>
+      <trans-unit id="Ekg-Dp-ebH.text">
+        <source>Password</source>
+        <target>Password</target>
+        <note>Class = "UILabel"; text = "Password"; ObjectID = "Ekg-Dp-ebH";</note>
+      </trans-unit>
+      <trans-unit id="WiZ-IO-OiL.text">
+        <source>Time</source>
+        <note>Class = "UILabel"; text = "Time"; ObjectID = "WiZ-IO-OiL";</note>
+      </trans-unit>
+      <trans-unit id="bdm-BV-g61.normalTitle">
+        <source>Change Security</source>
+        <target>Change Security</target>
+        <note>Class = "UIButton"; normalTitle = "Change Security"; ObjectID = "bdm-BV-g61";</note>
+      </trans-unit>
+      <trans-unit id="zk2-f2-90m.text">
+        <source>Company</source>
+        <target>Company</target>
+        <note>Class = "UILabel"; text = "Company"; ObjectID = "zk2-f2-90m";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AutoLayout/Info.plist" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AutoLayout/Localizable.strings" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="Password">
+        <source>Password</source>
+        <note>Password</note>
+      </trans-unit>
+      <trans-unit id="Secured">
+        <source>Secured</source>
+        <note>Password</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AutoLayoutTests/Info.plist" source-language="en" datatype="plaintext" target-language="zh-Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
