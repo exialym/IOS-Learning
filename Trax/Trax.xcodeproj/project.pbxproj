@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4511F2941C020EAE00067CFE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4511F2931C020EAE00067CFE /* MapKit.framework */; };
 		453AA7BB1B92F56E00C83C33 /* myGPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453AA7BA1B92F56E00C83C33 /* myGPS.swift */; };
 		453AA7BD1B930BD800C83C33 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453AA7BC1B930BD800C83C33 /* ImageViewController.swift */; };
 		45EC00711B95AE5600E3AC05 /* PointImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EC00701B95AE5600E3AC05 /* PointImageViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4511F2931C020EAE00067CFE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		453AA7BA1B92F56E00C83C33 /* myGPS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myGPS.swift; sourceTree = "<group>"; };
 		453AA7BC1B930BD800C83C33 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		45EC00701B95AE5600E3AC05 /* PointImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointImageViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4511F2941C020EAE00067CFE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +74,7 @@
 		45FB2F191B9184C800ED72F2 = {
 			isa = PBXGroup;
 			children = (
+				4511F2931C020EAE00067CFE /* MapKit.framework */,
 				45FB2F241B9184C800ED72F2 /* Trax */,
 				45FB2F3A1B9184C800ED72F2 /* TraxTests */,
 				45FB2F231B9184C800ED72F2 /* Products */,
@@ -180,6 +184,11 @@
 				TargetAttributes = {
 					45FB2F211B9184C800ED72F2 = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					45FB2F361B9184C800ED72F2 = {
 						CreatedOnToolsVersion = 6.4;

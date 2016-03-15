@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4503FE911BF335D0006C6740 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4503FE901BF335D0006C6740 /* GridCell.swift */; };
+		45FC3C0C1BF1D03A008FB90A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC3C0B1BF1D03A008FB90A /* AppDelegate.swift */; };
+		45FC3C111BF1D03A008FB90A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45FC3C0F1BF1D03A008FB90A /* Main.storyboard */; };
+		45FC3C131BF1D03A008FB90A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FC3C121BF1D03A008FB90A /* Assets.xcassets */; };
+		45FC3C161BF1D03A008FB90A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45FC3C141BF1D03A008FB90A /* LaunchScreen.storyboard */; };
+		45FC3C211BF1D03A008FB90A /* AwesomeGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC3C201BF1D03A008FB90A /* AwesomeGridTests.swift */; };
+		45FC3C2C1BF1D03A008FB90A /* AwesomeGridUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC3C2B1BF1D03A008FB90A /* AwesomeGridUITests.swift */; };
+		45FC3C401BF1D197008FB90A /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC3C3F1BF1D197008FB90A /* GridViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45FC3C1D1BF1D03A008FB90A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45FC3C001BF1D03A008FB90A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45FC3C071BF1D03A008FB90A;
+			remoteInfo = AwesomeGrid;
+		};
+		45FC3C281BF1D03A008FB90A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45FC3C001BF1D03A008FB90A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45FC3C071BF1D03A008FB90A;
+			remoteInfo = AwesomeGrid;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4503FE901BF335D0006C6740 /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		45FC3C081BF1D03A008FB90A /* AwesomeGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC3C0B1BF1D03A008FB90A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45FC3C101BF1D03A008FB90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		45FC3C121BF1D03A008FB90A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45FC3C151BF1D03A008FB90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		45FC3C171BF1D03A008FB90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45FC3C1C1BF1D03A008FB90A /* AwesomeGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC3C201BF1D03A008FB90A /* AwesomeGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeGridTests.swift; sourceTree = "<group>"; };
+		45FC3C221BF1D03A008FB90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45FC3C271BF1D03A008FB90A /* AwesomeGridUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeGridUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC3C2B1BF1D03A008FB90A /* AwesomeGridUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeGridUITests.swift; sourceTree = "<group>"; };
+		45FC3C2D1BF1D03A008FB90A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45FC3C3F1BF1D197008FB90A /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45FC3C051BF1D03A008FB90A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C191BF1D03A008FB90A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C241BF1D03A008FB90A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45FC3BFF1BF1D03A008FB90A = {
+			isa = PBXGroup;
+			children = (
+				45FC3C0A1BF1D03A008FB90A /* AwesomeGrid */,
+				45FC3C1F1BF1D03A008FB90A /* AwesomeGridTests */,
+				45FC3C2A1BF1D03A008FB90A /* AwesomeGridUITests */,
+				45FC3C091BF1D03A008FB90A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		45FC3C091BF1D03A008FB90A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45FC3C081BF1D03A008FB90A /* AwesomeGrid.app */,
+				45FC3C1C1BF1D03A008FB90A /* AwesomeGridTests.xctest */,
+				45FC3C271BF1D03A008FB90A /* AwesomeGridUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45FC3C0A1BF1D03A008FB90A /* AwesomeGrid */ = {
+			isa = PBXGroup;
+			children = (
+				45FC3C3F1BF1D197008FB90A /* GridViewController.swift */,
+				45FC3C0B1BF1D03A008FB90A /* AppDelegate.swift */,
+				45FC3C0F1BF1D03A008FB90A /* Main.storyboard */,
+				4503FE901BF335D0006C6740 /* GridCell.swift */,
+				45FC3C121BF1D03A008FB90A /* Assets.xcassets */,
+				45FC3C141BF1D03A008FB90A /* LaunchScreen.storyboard */,
+				45FC3C171BF1D03A008FB90A /* Info.plist */,
+			);
+			path = AwesomeGrid;
+			sourceTree = "<group>";
+		};
+		45FC3C1F1BF1D03A008FB90A /* AwesomeGridTests */ = {
+			isa = PBXGroup;
+			children = (
+				45FC3C201BF1D03A008FB90A /* AwesomeGridTests.swift */,
+				45FC3C221BF1D03A008FB90A /* Info.plist */,
+			);
+			path = AwesomeGridTests;
+			sourceTree = "<group>";
+		};
+		45FC3C2A1BF1D03A008FB90A /* AwesomeGridUITests */ = {
+			isa = PBXGroup;
+			children = (
+				45FC3C2B1BF1D03A008FB90A /* AwesomeGridUITests.swift */,
+				45FC3C2D1BF1D03A008FB90A /* Info.plist */,
+			);
+			path = AwesomeGridUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45FC3C071BF1D03A008FB90A /* AwesomeGrid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45FC3C301BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGrid" */;
+			buildPhases = (
+				45FC3C041BF1D03A008FB90A /* Sources */,
+				45FC3C051BF1D03A008FB90A /* Frameworks */,
+				45FC3C061BF1D03A008FB90A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AwesomeGrid;
+			productName = AwesomeGrid;
+			productReference = 45FC3C081BF1D03A008FB90A /* AwesomeGrid.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45FC3C1B1BF1D03A008FB90A /* AwesomeGridTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45FC3C331BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGridTests" */;
+			buildPhases = (
+				45FC3C181BF1D03A008FB90A /* Sources */,
+				45FC3C191BF1D03A008FB90A /* Frameworks */,
+				45FC3C1A1BF1D03A008FB90A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45FC3C1E1BF1D03A008FB90A /* PBXTargetDependency */,
+			);
+			name = AwesomeGridTests;
+			productName = AwesomeGridTests;
+			productReference = 45FC3C1C1BF1D03A008FB90A /* AwesomeGridTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		45FC3C261BF1D03A008FB90A /* AwesomeGridUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45FC3C361BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGridUITests" */;
+			buildPhases = (
+				45FC3C231BF1D03A008FB90A /* Sources */,
+				45FC3C241BF1D03A008FB90A /* Frameworks */,
+				45FC3C251BF1D03A008FB90A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45FC3C291BF1D03A008FB90A /* PBXTargetDependency */,
+			);
+			name = AwesomeGridUITests;
+			productName = AwesomeGridUITests;
+			productReference = 45FC3C271BF1D03A008FB90A /* AwesomeGridUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45FC3C001BF1D03A008FB90A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = exialym;
+				TargetAttributes = {
+					45FC3C071BF1D03A008FB90A = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = XCREM736ZC;
+					};
+					45FC3C1B1BF1D03A008FB90A = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = XCREM736ZC;
+						TestTargetID = 45FC3C071BF1D03A008FB90A;
+					};
+					45FC3C261BF1D03A008FB90A = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = XCREM736ZC;
+						TestTargetID = 45FC3C071BF1D03A008FB90A;
+					};
+				};
+			};
+			buildConfigurationList = 45FC3C031BF1D03A008FB90A /* Build configuration list for PBXProject "AwesomeGrid" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 45FC3BFF1BF1D03A008FB90A;
+			productRefGroup = 45FC3C091BF1D03A008FB90A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45FC3C071BF1D03A008FB90A /* AwesomeGrid */,
+				45FC3C1B1BF1D03A008FB90A /* AwesomeGridTests */,
+				45FC3C261BF1D03A008FB90A /* AwesomeGridUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45FC3C061BF1D03A008FB90A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45FC3C161BF1D03A008FB90A /* LaunchScreen.storyboard in Resources */,
+				45FC3C131BF1D03A008FB90A /* Assets.xcassets in Resources */,
+				45FC3C111BF1D03A008FB90A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C1A1BF1D03A008FB90A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C251BF1D03A008FB90A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45FC3C041BF1D03A008FB90A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45FC3C401BF1D197008FB90A /* GridViewController.swift in Sources */,
+				45FC3C0C1BF1D03A008FB90A /* AppDelegate.swift in Sources */,
+				4503FE911BF335D0006C6740 /* GridCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C181BF1D03A008FB90A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45FC3C211BF1D03A008FB90A /* AwesomeGridTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45FC3C231BF1D03A008FB90A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45FC3C2C1BF1D03A008FB90A /* AwesomeGridUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45FC3C1E1BF1D03A008FB90A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45FC3C071BF1D03A008FB90A /* AwesomeGrid */;
+			targetProxy = 45FC3C1D1BF1D03A008FB90A /* PBXContainerItemProxy */;
+		};
+		45FC3C291BF1D03A008FB90A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45FC3C071BF1D03A008FB90A /* AwesomeGrid */;
+			targetProxy = 45FC3C281BF1D03A008FB90A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		45FC3C0F1BF1D03A008FB90A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45FC3C101BF1D03A008FB90A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		45FC3C141BF1D03A008FB90A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45FC3C151BF1D03A008FB90A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		45FC3C2E1BF1D03A008FB90A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		45FC3C2F1BF1D03A008FB90A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45FC3C311BF1D03A008FB90A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = AwesomeGrid/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGrid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45FC3C321BF1D03A008FB90A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = AwesomeGrid/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGrid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45FC3C341BF1D03A008FB90A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AwesomeGridTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGridTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeGrid.app/AwesomeGrid";
+			};
+			name = Debug;
+		};
+		45FC3C351BF1D03A008FB90A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AwesomeGridTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGridTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeGrid.app/AwesomeGrid";
+			};
+			name = Release;
+		};
+		45FC3C371BF1D03A008FB90A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AwesomeGridUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGridUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AwesomeGrid;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		45FC3C381BF1D03A008FB90A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AwesomeGridUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.AwesomeGridUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AwesomeGrid;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45FC3C031BF1D03A008FB90A /* Build configuration list for PBXProject "AwesomeGrid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45FC3C2E1BF1D03A008FB90A /* Debug */,
+				45FC3C2F1BF1D03A008FB90A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45FC3C301BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGrid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45FC3C311BF1D03A008FB90A /* Debug */,
+				45FC3C321BF1D03A008FB90A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45FC3C331BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGridTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45FC3C341BF1D03A008FB90A /* Debug */,
+				45FC3C351BF1D03A008FB90A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45FC3C361BF1D03A008FB90A /* Build configuration list for PBXNativeTarget "AwesomeGridUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45FC3C371BF1D03A008FB90A /* Debug */,
+				45FC3C381BF1D03A008FB90A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45FC3C001BF1D03A008FB90A /* Project object */;
+}

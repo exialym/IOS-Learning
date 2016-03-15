@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Xcode 7.0">
+    <entity name="ASD" representedClassName=".ASD" syncable="YES"/>
+    <entity name="Book" representedClassName=".Book" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-45" positionY="0" width="128" height="75"/>
+        <element name="ASD" positionX="-18" positionY="45" width="128" height="45"/>
+    </elements>
+</model>

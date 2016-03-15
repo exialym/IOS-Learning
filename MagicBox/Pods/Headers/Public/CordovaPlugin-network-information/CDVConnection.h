@@ -1,0 +1,1 @@
+../../../CordovaPlugin-network-information/src/ios/CDVConnection.h

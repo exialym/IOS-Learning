@@ -8,9 +8,9 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-
-class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentationControllerDelegate{
+class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentationControllerDelegate, CLLocationManagerDelegate{
 
     
     @IBOutlet var mapView: MKMapView! {
@@ -19,7 +19,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentation
             mapView.delegate = self//设置自己为代理
         }
     }
-        
+    
+    let locationManager = CLLocationManager()
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var pointName = ""
@@ -61,8 +63,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentation
     }
     
     
-    var myGPSs: [MKAnnotation] = [myGPS(coorX: 39.9170529046423, coorY: 116.397189269045, initTitle: "故宫博物院", initSubtitle: "Center Of China",url: NSURL(string: "http://farm1.staticflickr.com/315/20118461406_da4008efa0_c.jpg"),initName: "Fixed")
-            ]
+    var myGPSs: [MKAnnotation] = []
     
     
     //定制Annotation的弹出框样式
@@ -135,6 +136,17 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentation
         }
         
     }
+    
+    //渲染覆盖物方法
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        //if overlay.isKindOfClass(MKCircle) {
+            let circleRender = MKCircleRenderer(overlay: overlay)
+            circleRender.strokeColor = UIColor.blueColor()
+            circleRender.lineWidth = 2.0
+            circleRender.fillColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+            return circleRender
+        //}
+    }
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -176,12 +188,52 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentation
         navcon.view.insertSubview(visualEffectView, atIndex: 0)
         return navcon
     }
+    //获取用户位置成功
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let newLocation = locations.last{
+            myGPSs.append(myGPS(coorX: newLocation.coordinate.latitude, coorY: newLocation.coordinate.longitude, initTitle: "你的位置", initSubtitle: "你在这里",url: NSURL(string: "http://img3.douban.com/view/photo/photo/public/p1864484723.jpg"),initName: "Fixed"))
+            //如果获得到的精度大于0则停止获取位置信息，否则很费电，这个值为－1则定位不可信
+            if newLocation.horizontalAccuracy>0 {
+                locationManager.stopUpdatingLocation()
+            }
+            //在获得的位置周围生成一个以精度为半径的覆盖物，这个必须实现一个mapView的代理方法才会生效，这个代理方法决定了如何渲染这个覆盖物
+            let overlay = MKCircle(centerCoordinate: newLocation.coordinate, radius: newLocation.horizontalAccuracy)
+            mapView.addOverlay(overlay)
+            
+            mapView.addAnnotations(myGPSs)
+            mapView.showAnnotations(myGPSs, animated: true)
+            
+            //newLocation.horizontalAccuracy
+        } else {
+            print("No location found")
+            //mapView.addAnnotations(myGPSs)
+            //mapView.showAnnotations(myGPSs, animated: true)
+        }
+    }
+
+    //获得用户位置失败
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        //mapView.addAnnotations(myGPSs)
+        //mapView.showAnnotations(myGPSs, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //对应两种获取的权限：只在前台获取位置信息requestWhenInUseAuthorization
+        //在后台也获取requestAlwaysAuthorization
+        //这个if判断是为了兼容IOS8以下，没有这个方法
+        if locationManager.respondsToSelector("requestWhenInUseAuthorization") {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        //设置定位精度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //设置设备移动多长的距离才调用位置更新方法
+        locationManager.distanceFilter = 1000
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
         savePoints.removeValueForKey("")
         let fileManager = NSFileManager()
-        let url = (fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first)! as! NSURL
+        let url = (fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first)! 
         for (key , pointArray) in savePoints {
             if pointArray.count == 5 {
                 if let x = NSNumberFormatter().numberFromString(pointArray[0])?.doubleValue {
@@ -207,8 +259,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentation
                 print("\(url)")
             }
         }
-        mapView.addAnnotations(myGPSs)
-        mapView.showAnnotations(myGPSs, animated: true)
+        
     }
     
 }

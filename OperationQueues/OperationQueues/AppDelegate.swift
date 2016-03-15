@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var backgroundTask: UIBackgroundTaskIdentifier?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,8 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.backgroundTask = application.beginBackgroundTaskWithExpirationHandler({ () -> Void in
+            application.endBackgroundTask(self.backgroundTask!)
+        })
+        let backgroundQueue = NSOperationQueue()
+        let notificationUrl = NSURL(string: "http://www.feng.com")
+        let notificationURLRequest = NSURLRequest(URL: notificationUrl!)
+        NSURLConnection.sendAsynchronousRequest(notificationURLRequest, queue: backgroundQueue, completionHandler: { (response: NSURLResponse?, data:NSData?, error:NSError?) -> Void in
+            let loadedString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("Loaded:\(loadedString)")
+            application.endBackgroundTask(self.backgroundTask!)
+        })
+//        backgroundQueue.addOperationWithBlock { () -> Void in
+//            let notificationUrl = NSURL(string: "http://www.feng.com")
+//            let notificationURLRequest = NSURLRequest(URL: notificationUrl!)
+//            try? data = NSURLConnection.sendSynchronousRequest(notificationURLRequest, returningResponse: nil)
+//            if let theData = data{
+//                
+//            }
+//            
+//        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

@@ -1,0 +1,25 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+# use_frameworks!
+platform :ios, "7.0"
+pod 'GCJSONKit','~> 1.5.0'
+pod 'AFNetworking', '~> 2.3.1'
+pod 'SVProgressHUD', '~> 1.0'
+pod 'Cordova', '~> 3.5.0'
+pod 'CordovaPlugin-console', '~> 0.2.10'
+pod 'CordovaPlugin-device', '~> 0.2.11'
+pod 'CordovaPlugin-network-information', '~> 0.2.3'
+
+target 'MagicBox' do
+
+end
+
+target 'MagicBoxTests' do
+
+end
+
+target 'MagicBoxUITests' do
+
+end
+

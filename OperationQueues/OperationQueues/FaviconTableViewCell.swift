@@ -10,16 +10,22 @@ import UIKit
 
 class FaviconTableViewCell: UITableViewCell {
     var operationQueue : NSOperationQueue?
+    
+    @IBOutlet weak var urltext: UILabel!
+    @IBOutlet weak var favImage: UIImageView!
     var url: NSURL?{
         didSet {
             let request = NSURLRequest(URL: self.url!)
-            self.textLabel?.text = self.url?.host
+            self.urltext.text = self.url?.host
             //这个方法现在好像不被推荐了
             NSURLConnection.sendAsynchronousRequest(request, queue: self.operationQueue!) { (response: NSURLResponse?, data:NSData?, error:NSError?) in
+                //let image = UIImage(named: "1")
                 let image = UIImage(data: data!)
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.imageView?.image = image
-                    self.setNeedsDisplay()
+                    if let imageview = self.favImage {
+                        imageview.image = image
+                        self.setNeedsDisplay()
+                    }
                 })
             }
         }

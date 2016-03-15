@@ -9,7 +9,7 @@
 import UIKit
 
 class BezierPathView: UIView {
-
+//
     private var bezierPath = [String:UIBezierPath]()
     
     func setPath(path: UIBezierPath?, named name: String) {

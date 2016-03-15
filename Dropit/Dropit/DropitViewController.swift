@@ -28,12 +28,14 @@ class DropitViewController: UIViewController, UIDynamicAnimatorDelegate{
     
     var attachment: UIAttachmentBehavior?{
         willSet{
-            animator.removeBehavior(attachment)
-            gameView.setPath(nil, named: "attachment")
+            if attachment != nil {
+                animator.removeBehavior(attachment!)
+                gameView.setPath(nil, named: "attachment")
+            }
         }
         didSet{
             if attachment != nil {
-                animator.addBehavior(attachment)
+                animator.addBehavior(attachment!)
                 attachment?.action = {[unowned self] in
                     if let attachmentView = self.attachment?.items.first as? UIView {
                         let path = UIBezierPath()
@@ -86,7 +88,6 @@ class DropitViewController: UIViewController, UIDynamicAnimatorDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         animator.addBehavior(dropitBehavior)
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -102,7 +103,7 @@ class DropitViewController: UIViewController, UIDynamicAnimatorDelegate{
         var dropsToRemove = [UIView]()
         var dropFrame = CGRect(x: 0, y: gameView.frame.maxY, width: dropSize.width, height: dropSize.height)
         
-        do {
+        repeat {
             dropFrame.origin.y -= dropSize.height
             dropFrame.origin.x = 0
             var dropsFound = [UIView]()

@@ -1,0 +1,36 @@
+{
+    "Name": "魔法盒子",
+    "Version": "1.0.1",
+    "PublishDate": "201512261234",
+    "SettingVersion": "1.0.2",
+    "Apps": {
+        "Amount":9,
+        "AppExt": "jpg",
+        "CurrentList": [
+                        {
+                        "Name": "百度新闻v1.0",
+                        "Description": "国内最流行的移动网站",
+                        "Type":0,
+                        "Link":"http://news.baidu.com",
+                        "CertNum":"484024-3143143214300",
+                        "IsHot":true,
+                        "IsNew":true,
+                        "IsHeart":true,
+                        "Position":0,
+                        "AppItem":"Baidu"
+                        },
+                        {
+                        "Name": "新浪微博v1.0",
+                        "Description": "国内最流行的博客",
+                        "Type":0,
+                        "Link":"http://weibo.com/",
+                        "CertNum":"484024-3143143214300",
+                        "IsHot":true,
+                        "IsNew":true,
+                        "IsHeart":true,
+                        "Position":1,
+                        "AppItem":"Sina"
+                        }
+        ]
+    }
+}

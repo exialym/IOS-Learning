@@ -8,8 +8,8 @@
 
 import UIKit
 //在stroyBoard中通过拖拽使这个ViewController成为tableView的dataSource和delegate
-class ViewController: UIViewController {
-    let hosts = ["feng.com","apple.com/cn"]
+class ViewController: UIViewController{
+    let hosts = ["feng.com","ketangpai.com"]
     let queue = NSOperationQueue()
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

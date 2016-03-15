@@ -68,7 +68,7 @@ class EditViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                 //获取fileManager
                 let fileManager = NSFileManager()
                 //得到根目录URL
-                if let docsDir = (fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first)! as? NSURL {
+                if let docsDir = (fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first) {
                     //通过唯一的时间来得到唯一的文件名
                     let uniqueFileName = NSDate.timeIntervalSinceReferenceDate()
                     //在根URL后添加文件相对路径

@@ -122,7 +122,7 @@ class ImageViewController: UIViewController ,UIScrollViewDelegate{
         })
         
         popAlert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
-            let tf = self.popAlert.textFields?.first as? UITextField!//self.popAlert.textFields?如果有的话返回的是一个AnyObject数组
+            let tf = self.popAlert.textFields?.first//self.popAlert.textFields?如果有的话返回的是一个AnyObject数组
             if tf != nil {
                 print("\(tf?.text)")
             }

@@ -22,17 +22,21 @@ class ViewController: UIViewController {
             //接下来加入一个一个的关键帧即可，这里要注意，起始时间和持续时间都是之前设置的总时间的百分比
             UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.2, animations: { () -> Void in
                 self.redBlock?.backgroundColor = UIColor.blackColor()
+                self.animator.updateItemUsingCurrentState(self.redBlock!)
             })
             UIView.addKeyframeWithRelativeStartTime(0.2, relativeDuration: 0.2, animations: { () -> Void in
                 self.redBlock?.center = self.view.center
+                self.animator.updateItemUsingCurrentState(self.redBlock!)
             })
             UIView.addKeyframeWithRelativeStartTime(0.4, relativeDuration: 0.6, animations: { () -> Void in
                 let rotation = CGFloat(270 * M_PI / 180.0)
                 self.redBlock?.transform = CGAffineTransformMakeRotation(rotation)
+                self.animator.updateItemUsingCurrentState(self.redBlock!)
             })
             }) { (Bool) -> Void in
                 //在动画全部结束时要做的事
                 self.redBlock?.backgroundColor = UIColor.blueColor()
+                self.animator.updateItemUsingCurrentState(self.redBlock!)
         }
     }
     @IBAction func tap(sender: UILongPressGestureRecognizer) {
