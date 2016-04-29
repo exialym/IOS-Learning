@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MagicBar/ViewController.swift"
+            timestampString = "482748698.202437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "peripheral(_:didUpdateValueForCharacteristic:error:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MagicBar.ViewController.peripheral (__ObjC.CBPeripheral, didUpdateValueForCharacteristic : __ObjC.CBCharacteristic, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()"
+                  moduleName = "MagicBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/exialym/Library/Mobile%20Documents/com~apple~CloudDocs/IOS%20Learning/MagicBar/MagicBar/ViewController.swift"
+                  timestampString = "481296649.089633"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "936">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MagicBar.ViewController.peripheral (__ObjC.CBPeripheral, didUpdateValueForCharacteristic : __ObjC.CBCharacteristic, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()"
+                  moduleName = "MagicBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/exialym/Library/Mobile%20Documents/com~apple~CloudDocs/IOS%20Learning/MagicBar/MagicBar/ViewController.swift"
+                  timestampString = "481296649.089884"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "980">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MagicBar/ViewController.swift"
+            timestampString = "482748698.202437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MagicBar/WordToArray.swift"
+            timestampString = "482149119.312134"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "read(_:posCode:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
