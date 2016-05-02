@@ -97,12 +97,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             //case "FFF2":fallthrough
             //case "FFF1":fallthrough
             //case "FEC7":
-            case "14702856-620A-3973-7C78-9CFFF0876ABD":
+            case "FFE1":
                 let testData: NSString = "Exialym"
                 let dataValue: NSData = testData.dataUsingEncoding(NSUTF8StringEncoding)!
                 self.peripheral?.writeValue(dataValue, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
                 writeCharacteristic = characteristic
-                performSegueWithIdentifier("showDraw", sender: "吧")
+                performSegueWithIdentifier("showDraw", sender: "电")
             default:break
             }
             

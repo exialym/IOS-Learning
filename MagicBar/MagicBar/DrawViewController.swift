@@ -25,6 +25,27 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var button5: UIButton!
+    @IBAction func turnGrid(sender: UIButton) {
+        if drawView.isGrid {
+            drawView.isGrid = false
+            sender.setTitle("Grid:Off", forState: UIControlState.Normal)
+        } else {
+            drawView.isGrid = true
+            sender.setTitle("Grid:On", forState: UIControlState.Normal)
+        }
+    }
+    @IBAction func greenButton(sender: UIButton) {
+        drawView.setColors("green")
+    }
+    @IBAction func blueButton(sender: UIButton) {
+        drawView.setColors("blue")
+    }
+    @IBAction func redButton(sender: UIButton) {
+        drawView.setColors("red")
+    }
+    @IBAction func yellowButton(sender: UIButton) {
+        drawView.setColors("yellow")
+    }
     @IBAction func changeToImage1(sender: UIButton) {
         drawView.saveToDataArray(1)
         setButtonBorder(sender)
