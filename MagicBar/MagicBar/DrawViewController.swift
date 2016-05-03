@@ -24,7 +24,6 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var button5: UIButton!
     @IBAction func turnGrid(sender: UIButton) {
         if drawView.isGrid {
             drawView.isGrid = false
@@ -35,16 +34,25 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @IBAction func greenButton(sender: UIButton) {
-        drawView.setColors("green")
+        drawView.setColors(0b00000010)
+    }
+    @IBAction func pinkButton(sender: UIButton) {
+        drawView.setColors(0b00010000)
+    }
+    @IBAction func whiteButton(sender: UIButton) {
+        drawView.setColors(0b00100000)
+    }
+    @IBAction func cyanButton(sender: UIButton) {
+        drawView.setColors(0b01000000)
     }
     @IBAction func blueButton(sender: UIButton) {
-        drawView.setColors("blue")
+        drawView.setColors(0b00000001)
     }
     @IBAction func redButton(sender: UIButton) {
-        drawView.setColors("red")
+        drawView.setColors(0b00000100)
     }
     @IBAction func yellowButton(sender: UIButton) {
-        drawView.setColors("yellow")
+        drawView.setColors(0b00001000)
     }
     @IBAction func changeToImage1(sender: UIButton) {
         drawView.saveToDataArray(1)
@@ -66,20 +74,12 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
         setButtonBorder(sender)
     }
     
-    @IBAction func changeToImage5(sender: UIButton) {
-        drawView.saveToDataArray(5)
-        setButtonBorder(sender)
-    }
     
     @IBAction func sendData(sender: UIButton) {
-        let dataValue: NSData = textMsg.text!.dataUsingEncoding(NSUTF8StringEncoding)!
-        print(writeCharacterisitic)
-        print(drawView.blockArray.map({ (row:[BlockView?]) -> [Int] in
-            return row.map({ (block:BlockView?) -> Int in
-                return (block?.ischoosed)!
-            })
-        }))
-        self.connectedDevice?.writeValue(dataValue, forCharacteristic: writeCharacterisitic!, type: CBCharacteristicWriteType.WithResponse)
+        let dataValue = drawView.sendData()
+        for data in dataValue {
+            self.connectedDevice?.writeValue(data, forCharacteristic: writeCharacterisitic!, type: CBCharacteristicWriteType.WithResponse)
+        }
     }
     @IBAction func clean(sender: UIButton) {
         for row in drawView.blockArray {
@@ -104,7 +104,6 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
         button2.layer.borderWidth = 0
         button3.layer.borderWidth = 0
         button4.layer.borderWidth = 0
-        button5.layer.borderWidth = 0
         thisButton.layer.borderWidth = 1
         thisButton.layer.cornerRadius = 5.0
         thisButton.layer.borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.00).CGColor

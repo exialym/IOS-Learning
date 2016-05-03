@@ -18,7 +18,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     @IBAction func searchDevice(sender: UIButton) {
         //centralManager?.scanForPeripheralsWithServices(nil, options: nil)
-        performSegueWithIdentifier("showDraw", sender: "兔")
+        performSegueWithIdentifier("showDraw", sender: "繁")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,11 +98,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             //case "FFF1":fallthrough
             //case "FEC7":
             case "FFE1":
-                let testData: NSString = "Exialym"
-                let dataValue: NSData = testData.dataUsingEncoding(NSUTF8StringEncoding)!
-                self.peripheral?.writeValue(dataValue, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
                 writeCharacteristic = characteristic
-                performSegueWithIdentifier("showDraw", sender: "电")
+                performSegueWithIdentifier("showDraw", sender: "繁")
             default:break
             }
             
