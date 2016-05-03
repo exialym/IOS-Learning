@@ -148,19 +148,19 @@ class DrawView: UIView {
                 var tempchar:UInt8 = 0b00000000
                 for i in (0..<8) {
                     tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 1 : 0)
+                    tempchar += (row[i] == 1 ? 0 : 1)
                 }
                 tempData[index].append(tempchar)
                 tempchar = 0b00000000
                 for i in (8..<16) {
                     tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 1 : 0)
+                    tempchar += (row[i] == 1 ? 0 : 1)
                 }
                 tempData[index].append(tempchar)
                 tempchar = 0b00000000
                 for i in (16..<24) {
                     tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 1 : 0)
+                    tempchar += (row[i] == 1 ? 0 : 1)
                 }
                 tempData[index].append(tempchar)
             }
