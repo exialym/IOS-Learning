@@ -9,7 +9,7 @@
 import Foundation
 class WordToArray {
     var arr = [[Bool]]()
-    let all_16_32 = 24
+    let all_16_32 = 16//24
     let all_2_4 = 3
     let all_32_128 = 72
     
@@ -56,7 +56,7 @@ class WordToArray {
         var data = [UInt8](count: all_32_128, repeatedValue: 0)
         let area:Int = areaCode - 0xa0;
         let pos:Int = posCode - 0xa0;
-        let url = NSBundle.mainBundle().URLForResource("hzk24", withExtension: nil)
+        let url = NSBundle.mainBundle().URLForResource("hzk16", withExtension: nil)
         let dataInput = NSData(contentsOfURL: url!)
         //print(dataInput)
         let offset:Int = all_32_128 * ((area - 1) * 94 + pos - 1);

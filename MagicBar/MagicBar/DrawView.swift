@@ -9,8 +9,8 @@
 import UIKit
 @IBDesignable
 class DrawView: UIView {
-    let columnNum = 24//列数
-    let rowNum = 24//行数
+    let columnNum = 16//列数24
+    let rowNum = 16//行数24
     let picNum = 4//画面数
     let defaultBackgroundColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00).CGColor
     let borderColor = UIColor.whiteColor().CGColor
@@ -157,16 +157,16 @@ class DrawView: UIView {
                     tempchar += (row[i] == 1 ? 0 : 1)
                 }
                 tempData[index].append(tempchar)
-                tempchar = 0b00000000
-                for i in (16..<24) {
-                    tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 0 : 1)
-                }
-                tempData[index].append(tempchar)
+//                tempchar = 0b00000000
+//                for i in (16..<24) {
+//                    tempchar = tempchar << 1
+//                    tempchar += (row[i] == 1 ? 0 : 1)
+//                }
+//                tempData[index].append(tempchar)
             }
         }
         for i in (0..<tempData.count) {
-            dataValue.append(NSData(bytes: tempData[i], length: 73))
+            dataValue.append(NSData(bytes: tempData[i], length: 33))//73
         }
         print(dataValue)
         return dataValue
