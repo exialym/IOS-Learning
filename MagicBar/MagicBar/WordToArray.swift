@@ -10,8 +10,8 @@ import Foundation
 class WordToArray {
     var arr = [[Bool]]()
     let all_16_32 = 16//24
-    let all_2_4 = 3
-    let all_32_128 = 72
+    let all_2_4 = 2//3
+    let all_32_128 = 32//72
     
     func drawString(strAll:String) ->[[Bool]] {
         let str = (strAll as NSString).substringToIndex(1)
