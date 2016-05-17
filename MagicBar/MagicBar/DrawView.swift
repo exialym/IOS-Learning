@@ -147,14 +147,14 @@ class DrawView: UIView {
             for row in image {
                 var tempchar:UInt8 = 0b00000000
                 for i in (0..<8) {
-                    tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 0 : 1)
+                    tempchar = tempchar >> 1
+                    tempchar += (row[i] == 1 ? 0 : 0b10000000)
                 }
                 tempData[index].append(tempchar)
                 tempchar = 0b00000000
                 for i in (8..<16) {
-                    tempchar = tempchar << 1
-                    tempchar += (row[i] == 1 ? 0 : 1)
+                    tempchar = tempchar >> 1
+                    tempchar += (row[i] == 1 ? 0 : 0b10000000)
                 }
                 tempData[index].append(tempchar)
 //                tempchar = 0b00000000
