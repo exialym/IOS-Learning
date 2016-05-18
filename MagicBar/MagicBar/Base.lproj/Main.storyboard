@@ -235,6 +235,14 @@
                                     <action selector="greenButton:" destination="dYB-pl-oIR" eventType="touchUpInside" id="uj5-Pt-GgF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-Up-Ysm">
+                                <rect key="frame" x="22" y="524" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="dYB-pl-oIR" eventType="touchUpInside" id="vIa-Z9-Brk"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="XwL-Zm-MhG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -250,6 +258,7 @@
                             <constraint firstItem="AFx-lT-wPx" firstAttribute="centerY" secondItem="jk6-N2-LAf" secondAttribute="centerY" id="Hge-fp-YJI"/>
                             <constraint firstItem="ExU-Fy-ntf" firstAttribute="width" secondItem="jk6-N2-LAf" secondAttribute="width" id="K49-ck-AMe"/>
                             <constraint firstItem="ICJ-rj-yQo" firstAttribute="top" secondItem="SYU-gJ-XnC" secondAttribute="bottom" constant="8" symbolic="YES" id="LFe-Lm-pOq"/>
+                            <constraint firstItem="Ok0-kE-PB4" firstAttribute="top" secondItem="tbv-Up-Ysm" secondAttribute="bottom" constant="8" id="M7a-43-tJD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ogS-Td-TAg" secondAttribute="trailing" id="NlX-VH-XOz"/>
                             <constraint firstItem="AFx-lT-wPx" firstAttribute="leading" secondItem="jk6-N2-LAf" secondAttribute="trailing" constant="8" symbolic="YES" id="QEw-5m-7w8"/>
                             <constraint firstItem="SYU-gJ-XnC" firstAttribute="leading" secondItem="1nr-Xu-ngS" secondAttribute="trailing" constant="8" symbolic="YES" id="QNI-Xc-XmC"/>
@@ -270,6 +279,7 @@
                             <constraint firstItem="ExU-Fy-ntf" firstAttribute="centerY" secondItem="jk6-N2-LAf" secondAttribute="centerY" id="g1L-eG-Pjx"/>
                             <constraint firstItem="Pbr-pS-MvV" firstAttribute="leading" secondItem="I1f-2u-4Da" secondAttribute="trailing" constant="24" id="gIo-tY-OQT"/>
                             <constraint firstItem="7Rz-at-31c" firstAttribute="centerY" secondItem="OY1-Bp-WFq" secondAttribute="centerY" id="gZ3-VA-hEZ"/>
+                            <constraint firstItem="tbv-Up-Ysm" firstAttribute="centerX" secondItem="Ok0-kE-PB4" secondAttribute="centerX" id="h1i-XU-qk0"/>
                             <constraint firstItem="Oxf-kl-VM9" firstAttribute="leading" secondItem="Ok0-kE-PB4" secondAttribute="trailing" constant="8" symbolic="YES" id="hbd-eV-Yba"/>
                             <constraint firstItem="1nr-Xu-ngS" firstAttribute="centerY" secondItem="SYU-gJ-XnC" secondAttribute="centerY" id="iHh-bs-VQ9"/>
                             <constraint firstItem="ExU-Fy-ntf" firstAttribute="leading" secondItem="IUG-9W-cZa" secondAttribute="trailing" constant="8" symbolic="YES" id="mhU-b9-Rjn"/>

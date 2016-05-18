@@ -160,6 +160,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 if let data = sender as? String {
                     destination.data = data
                     destination.connectedDevice = self.peripheral
+                    destination.centralManager = self.centralManager
                     destination.writeCharacterisitic = self.writeCharacteristic
                 }
         }

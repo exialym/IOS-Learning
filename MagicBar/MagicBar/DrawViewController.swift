@@ -14,8 +14,12 @@ class DrawViewController: UIViewController, UITextFieldDelegate {
     var wordConvert:WordToArray = WordToArray()
     var data:String?
     var connectedDevice:CBPeripheral?
+    var centralManager:CBCentralManager?
     var writeCharacterisitic:CBCharacteristic?
     @IBOutlet weak var textMsg: UITextField!
+    @IBAction func back(sender: UIButton) {
+        centralManager?.cancelPeripheralConnection(connectedDevice!)
+    }
     @IBAction func perview(sender: UIButton) {
         drawView.setWord(wordConvert.drawString(textMsg.text ?? ""))
     }

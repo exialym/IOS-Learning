@@ -32,22 +32,22 @@ class WordToArray {
                 for j in(0..<8) {
                     let move:UInt8 = 8-UInt8(j)
                     if j==0 {
-                       //print(" ",terminator:"")
+                       print(" ",terminator:"")
                         arr[line][lCount] = false
                         continue
                     }
                     if (((data[byteCount] >> move) & 0x1) == 1) {
                         arr[line][lCount] = true
-                        //print("*",terminator:"")
+                        print("*",terminator:"")
                     } else {
-                        //print(" ",terminator:"")
+                        print(" ",terminator:"")
                         arr[line][lCount] = false
                     }
                     lCount+=1
                 }
                 byteCount+=1
                 }
-                //print("\n")
+                print("\n")
         }
         return arr
     }
