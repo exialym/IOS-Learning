@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1BE6FD1CFD300B001F928A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1BE6FC1CFD300B001F928A /* AVFoundation.framework */; };
+		6B1BE6FF1CFD3014001F928A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1BE6FE1CFD3014001F928A /* Foundation.framework */; };
+		6B1D138D1CEAB05C00C5ABAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D138C1CEAB05C00C5ABAF /* LoginViewController.swift */; };
+		6B22013F1CF1AB1B0064CB3D /* ChargingRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B22013E1CF1AB1B0064CB3D /* ChargingRecordController.swift */; };
+		6B41AD051D0E502D00A6B378 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B41ACFB1D0E502D00A6B378 /* back@2x.png */; };
+		6B41AD061D0E502D00A6B378 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B41ACFC1D0E502D00A6B378 /* line@2x.png */; };
+		6B41AD071D0E502D00A6B378 /* MCBaseCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41ACFD1D0E502D00A6B378 /* MCBaseCameraManager.swift */; };
+		6B41AD081D0E502D00A6B378 /* MCCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41ACFE1D0E502D00A6B378 /* MCCameraManager.swift */; };
+		6B41AD091D0E502D00A6B378 /* MCCameraManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41ACFF1D0E502D00A6B378 /* MCCameraManagerDelegate.swift */; };
+		6B41AD0A1D0E502D00A6B378 /* MCMachineCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD001D0E502D00A6B378 /* MCMachineCodeViewController.swift */; };
+		6B41AD0B1D0E502D00A6B378 /* MCOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD011D0E502D00A6B378 /* MCOverlayView.swift */; };
+		6B41AD0C1D0E502D00A6B378 /* MCPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD021D0E502D00A6B378 /* MCPreviewView.swift */; };
+		6B41AD0D1D0E502D00A6B378 /* qrcode_found.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6B41AD031D0E502D00A6B378 /* qrcode_found.wav */; };
+		6B41AD0E1D0E502D00A6B378 /* scan_net@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B41AD041D0E502D00A6B378 /* scan_net@2x.png */; };
+		6B41AD101D0EA33200A6B378 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD0F1D0EA33200A6B378 /* user.swift */; };
+		6B41AD121D0EB8F600A6B378 /* userFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD111D0EB8F600A6B378 /* userFunc.swift */; };
+		6B41AD141D0EBA4900A6B378 /* ChargePile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD131D0EBA4900A6B378 /* ChargePile.swift */; };
+		6B41AD161D0EBA6000A6B378 /* ChargePileFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD151D0EBA6000A6B378 /* ChargePileFunc.swift */; };
+		6B41AD191D0EBB0B00A6B378 /* ChargeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD181D0EBB0B00A6B378 /* ChargeStation.swift */; };
+		6B41AD1B1D0EBB1900A6B378 /* ChargeStationFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD1A1D0EBB1900A6B378 /* ChargeStationFunc.swift */; };
+		6B41AD1D1D0EBB3400A6B378 /* ChargeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD1C1D0EBB3400A6B378 /* ChargeRecord.swift */; };
+		6B41AD1F1D0EBBC000A6B378 /* ChargeRecordFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41AD1E1D0EBBC000A6B378 /* ChargeRecordFunc.swift */; };
 		6B436E411CE5A46A00DE6521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B436E401CE5A46A00DE6521 /* AppDelegate.swift */; };
 		6B436E431CE5A46A00DE6521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B436E421CE5A46A00DE6521 /* ViewController.swift */; };
 		6B436E461CE5A46A00DE6521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B436E441CE5A46A00DE6521 /* Main.storyboard */; };
@@ -397,7 +419,15 @@
 		6B43716C1CE5AAC000DE6521 /* yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B436FEF1CE5AAC000DE6521 /* yes@3x.png */; };
 		6B43716E1CE5B9B300DE6521 /* ChargingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43716D1CE5B9B300DE6521 /* ChargingViewController.swift */; };
 		6B4371701CE5B9D200DE6521 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43716F1CE5B9D200DE6521 /* MeViewController.swift */; };
+		6B4618181CF834EB00721842 /* editPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4618171CF834EB00721842 /* editPhoto.swift */; };
+		6B4E82781CEC15A700F4DD3E /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E82771CEC15A700F4DD3E /* PayViewController.swift */; };
+		6B4E827C1CEC653F00F4DD3E /* MyCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E827B1CEC653F00F4DD3E /* MyCollectionTableViewController.swift */; };
 		6B5373961CE9980200A3089E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5373951CE9980200A3089E /* TabBarViewController.swift */; };
+		6B6ED2291D0510AC00C0CA4C /* InChargingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6ED2281D0510AC00C0CA4C /* InChargingViewController.swift */; };
+		6B6ED22B1D056B6C00C0CA4C /* InputCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6ED22A1D056B6C00C0CA4C /* InputCodeViewController.swift */; };
+		6B9AC3281CF4478A005D981C /* ChargingLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AC3271CF4478A005D981C /* ChargingLoginViewController.swift */; };
+		6BE50DD21CF30609008212E7 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE50DD11CF30609008212E7 /* SettingTableViewController.swift */; };
+		6BEDBFEA1D0FA75800DDB9DE /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDBFE91D0FA75800DDB9DE /* PayTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +448,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B1BE6FC1CFD300B001F928A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6B1BE6FE1CFD3014001F928A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6B1D138C1CEAB05C00C5ABAF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6B22013E1CF1AB1B0064CB3D /* ChargingRecordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargingRecordController.swift; sourceTree = "<group>"; };
+		6B41ACFB1D0E502D00A6B378 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		6B41ACFC1D0E502D00A6B378 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
+		6B41ACFD1D0E502D00A6B378 /* MCBaseCameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCBaseCameraManager.swift; sourceTree = "<group>"; };
+		6B41ACFE1D0E502D00A6B378 /* MCCameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCCameraManager.swift; sourceTree = "<group>"; };
+		6B41ACFF1D0E502D00A6B378 /* MCCameraManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCCameraManagerDelegate.swift; sourceTree = "<group>"; };
+		6B41AD001D0E502D00A6B378 /* MCMachineCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCMachineCodeViewController.swift; sourceTree = "<group>"; };
+		6B41AD011D0E502D00A6B378 /* MCOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCOverlayView.swift; sourceTree = "<group>"; };
+		6B41AD021D0E502D00A6B378 /* MCPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPreviewView.swift; sourceTree = "<group>"; };
+		6B41AD031D0E502D00A6B378 /* qrcode_found.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = qrcode_found.wav; sourceTree = "<group>"; };
+		6B41AD041D0E502D00A6B378 /* scan_net@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_net@2x.png"; sourceTree = "<group>"; };
+		6B41AD0F1D0EA33200A6B378 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		6B41AD111D0EB8F600A6B378 /* userFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userFunc.swift; sourceTree = "<group>"; };
+		6B41AD131D0EBA4900A6B378 /* ChargePile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargePile.swift; sourceTree = "<group>"; };
+		6B41AD151D0EBA6000A6B378 /* ChargePileFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargePileFunc.swift; sourceTree = "<group>"; };
+		6B41AD181D0EBB0B00A6B378 /* ChargeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeStation.swift; sourceTree = "<group>"; };
+		6B41AD1A1D0EBB1900A6B378 /* ChargeStationFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeStationFunc.swift; sourceTree = "<group>"; };
+		6B41AD1C1D0EBB3400A6B378 /* ChargeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeRecord.swift; sourceTree = "<group>"; };
+		6B41AD1E1D0EBBC000A6B378 /* ChargeRecordFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeRecordFunc.swift; sourceTree = "<group>"; };
 		6B436E3D1CE5A46A00DE6521 /* ElectricStationBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectricStationBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B436E401CE5A46A00DE6521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B436E421CE5A46A00DE6521 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -814,7 +866,15 @@
 		6B436FEF1CE5AAC000DE6521 /* yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes@3x.png"; sourceTree = "<group>"; };
 		6B43716D1CE5B9B300DE6521 /* ChargingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargingViewController.swift; sourceTree = "<group>"; };
 		6B43716F1CE5B9D200DE6521 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		6B4618171CF834EB00721842 /* editPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editPhoto.swift; sourceTree = "<group>"; };
+		6B4E82771CEC15A700F4DD3E /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		6B4E827B1CEC653F00F4DD3E /* MyCollectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionTableViewController.swift; sourceTree = "<group>"; };
 		6B5373951CE9980200A3089E /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6B6ED2281D0510AC00C0CA4C /* InChargingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InChargingViewController.swift; sourceTree = "<group>"; };
+		6B6ED22A1D056B6C00C0CA4C /* InputCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCodeViewController.swift; sourceTree = "<group>"; };
+		6B9AC3271CF4478A005D981C /* ChargingLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargingLoginViewController.swift; sourceTree = "<group>"; };
+		6BE50DD11CF30609008212E7 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		6BEDBFE91D0FA75800DDB9DE /* PayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,6 +882,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B1BE6FF1CFD3014001F928A /* Foundation.framework in Frameworks */,
+				6B1BE6FD1CFD300B001F928A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,9 +904,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B41ACFA1D0E502D00A6B378 /* MCMachineCodeController */ = {
+			isa = PBXGroup;
+			children = (
+				6B41ACFB1D0E502D00A6B378 /* back@2x.png */,
+				6B41ACFC1D0E502D00A6B378 /* line@2x.png */,
+				6B41ACFD1D0E502D00A6B378 /* MCBaseCameraManager.swift */,
+				6B41ACFE1D0E502D00A6B378 /* MCCameraManager.swift */,
+				6B41ACFF1D0E502D00A6B378 /* MCCameraManagerDelegate.swift */,
+				6B41AD001D0E502D00A6B378 /* MCMachineCodeViewController.swift */,
+				6B41AD011D0E502D00A6B378 /* MCOverlayView.swift */,
+				6B41AD021D0E502D00A6B378 /* MCPreviewView.swift */,
+				6B41AD031D0E502D00A6B378 /* qrcode_found.wav */,
+				6B41AD041D0E502D00A6B378 /* scan_net@2x.png */,
+			);
+			path = MCMachineCodeController;
+			sourceTree = "<group>";
+		};
+		6B41AD171D0EBA7000A6B378 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B41AD0F1D0EA33200A6B378 /* user.swift */,
+				6B41AD111D0EB8F600A6B378 /* userFunc.swift */,
+				6B41AD131D0EBA4900A6B378 /* ChargePile.swift */,
+				6B41AD151D0EBA6000A6B378 /* ChargePileFunc.swift */,
+				6B41AD181D0EBB0B00A6B378 /* ChargeStation.swift */,
+				6B41AD1A1D0EBB1900A6B378 /* ChargeStationFunc.swift */,
+				6B41AD1C1D0EBB3400A6B378 /* ChargeRecord.swift */,
+				6B41AD1E1D0EBBC000A6B378 /* ChargeRecordFunc.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		6B436E341CE5A46A00DE6521 = {
 			isa = PBXGroup;
 			children = (
+				6B41ACFA1D0E502D00A6B378 /* MCMachineCodeController */,
+				6B1BE6FE1CFD3014001F928A /* Foundation.framework */,
+				6B1BE6FC1CFD300B001F928A /* AVFoundation.framework */,
 				6B436E3F1CE5A46A00DE6521 /* ElectricStationBoard */,
 				6B436E541CE5A46A00DE6521 /* ElectricStationBoardTests */,
 				6B436E5F1CE5A46A00DE6521 /* ElectricStationBoardUITests */,
@@ -865,12 +962,14 @@
 		6B436E3F1CE5A46A00DE6521 /* ElectricStationBoard */ = {
 			isa = PBXGroup;
 			children = (
+				6B41AD171D0EBA7000A6B378 /* Models */,
+				6BE50DD01CF2F074008212E7 /* userInfo */,
+				6BE50DCF1CF2F024008212E7 /* Charging */,
+				6BE50DCE1CF2EFF7008212E7 /* login */,
 				6B436E6E1CE5AABE00DE6521 /* image */,
 				6B436E401CE5A46A00DE6521 /* AppDelegate.swift */,
 				6B5373951CE9980200A3089E /* TabBarViewController.swift */,
 				6B436E421CE5A46A00DE6521 /* ViewController.swift */,
-				6B43716D1CE5B9B300DE6521 /* ChargingViewController.swift */,
-				6B43716F1CE5B9D200DE6521 /* MeViewController.swift */,
 				6B436E441CE5A46A00DE6521 /* Main.storyboard */,
 				6B436E471CE5A46A00DE6521 /* Assets.xcassets */,
 				6B436E491CE5A46A00DE6521 /* LaunchScreen.storyboard */,
@@ -1317,6 +1416,39 @@
 			path = personal;
 			sourceTree = "<group>";
 		};
+		6BE50DCE1CF2EFF7008212E7 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				6B1D138C1CEAB05C00C5ABAF /* LoginViewController.swift */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		6BE50DCF1CF2F024008212E7 /* Charging */ = {
+			isa = PBXGroup;
+			children = (
+				6B43716D1CE5B9B300DE6521 /* ChargingViewController.swift */,
+				6B9AC3271CF4478A005D981C /* ChargingLoginViewController.swift */,
+				6B6ED2281D0510AC00C0CA4C /* InChargingViewController.swift */,
+				6B6ED22A1D056B6C00C0CA4C /* InputCodeViewController.swift */,
+			);
+			name = Charging;
+			sourceTree = "<group>";
+		};
+		6BE50DD01CF2F074008212E7 /* userInfo */ = {
+			isa = PBXGroup;
+			children = (
+				6B43716F1CE5B9D200DE6521 /* MeViewController.swift */,
+				6B4E827B1CEC653F00F4DD3E /* MyCollectionTableViewController.swift */,
+				6B22013E1CF1AB1B0064CB3D /* ChargingRecordController.swift */,
+				6B4E82771CEC15A700F4DD3E /* PayViewController.swift */,
+				6BEDBFE91D0FA75800DDB9DE /* PayTableViewCell.swift */,
+				6BE50DD11CF30609008212E7 /* SettingTableViewController.swift */,
+				6B4618171CF834EB00721842 /* editPhoto.swift */,
+			);
+			name = userInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1385,7 +1517,7 @@
 				TargetAttributes = {
 					6B436E3C1CE5A46A00DE6521 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = XCREM736ZC;
+						DevelopmentTeam = NR25X4M65Y;
 					};
 					6B436E501CE5A46A00DE6521 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1434,6 +1566,7 @@
 				6B4371201CE5AAC000DE6521 /* peoples@3x.png in Resources */,
 				6B4370EC1CE5AAC000DE6521 /* map_icon_star_yellow3@2x.png in Resources */,
 				6B4370F71CE5AAC000DE6521 /* me_icon_phone_binded@2x.png in Resources */,
+				6B41AD061D0E502D00A6B378 /* line@2x.png in Resources */,
 				6B4370081CE5AAC000DE6521 /* car_activities@3x.png in Resources */,
 				6B4370AA1CE5AAC000DE6521 /* guide0@2x.png in Resources */,
 				6B4370DF1CE5AAC000DE6521 /* login_wechat@3x.png in Resources */,
@@ -1497,6 +1630,7 @@
 				6B4370B01CE5AAC000DE6521 /* hot@2x.png in Resources */,
 				6B43709A1CE5AAC000DE6521 /* g_money_charging@2x.png in Resources */,
 				6B43704B1CE5AAC000DE6521 /* construction_pile@2x.png in Resources */,
+				6B41AD0D1D0E502D00A6B378 /* qrcode_found.wav in Resources */,
 				6B4370B21CE5AAC000DE6521 /* icon_battery@2x.png in Resources */,
 				6B4370801CE5AAC000DE6521 /* g_back@2x.png in Resources */,
 				6B4371601CE5AAC000DE6521 /* station_placeholder@2x.png in Resources */,
@@ -1719,6 +1853,7 @@
 				6B43715A1CE5AAC000DE6521 /* shape-1@2x.png in Resources */,
 				6B43706B1CE5AAC000DE6521 /* filter_unselect@2x.png in Resources */,
 				6B4370341CE5AAC000DE6521 /* carr_zhongshihua@2x.png in Resources */,
+				6B41AD051D0E502D00A6B378 /* back@2x.png in Resources */,
 				6B4370161CE5AAC000DE6521 /* carr_guowang_hl@2x.png in Resources */,
 				6B4370671CE5AAC000DE6521 /* filter_slow@2x.png in Resources */,
 				6B4370A21CE5AAC000DE6521 /* g_right_small_press@2x.png in Resources */,
@@ -1758,6 +1893,7 @@
 				6B4370211CE5AAC000DE6521 /* carr_putian@3x.png in Resources */,
 				6B43713E1CE5AAC000DE6521 /* pin_level5@3x.png in Resources */,
 				6B4370271CE5AAC000DE6521 /* carr_shougang_hl@3x.png in Resources */,
+				6B41AD0E1D0E502D00A6B378 /* scan_net@2x.png in Resources */,
 				6B43708C1CE5AAC000DE6521 /* g_comment@2x.png in Resources */,
 				6B4370B71CE5AAC000DE6521 /* icon_bind_v1.4_selected@2x.png in Resources */,
 				6B4371171CE5AAC000DE6521 /* next_step@3x.png in Resources */,
@@ -1830,11 +1966,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B41AD121D0EB8F600A6B378 /* userFunc.swift in Sources */,
+				6B6ED22B1D056B6C00C0CA4C /* InputCodeViewController.swift in Sources */,
+				6B41AD1F1D0EBBC000A6B378 /* ChargeRecordFunc.swift in Sources */,
+				6B1D138D1CEAB05C00C5ABAF /* LoginViewController.swift in Sources */,
+				6B41AD091D0E502D00A6B378 /* MCCameraManagerDelegate.swift in Sources */,
+				6B41AD1B1D0EBB1900A6B378 /* ChargeStationFunc.swift in Sources */,
+				6B22013F1CF1AB1B0064CB3D /* ChargingRecordController.swift in Sources */,
+				6B41AD071D0E502D00A6B378 /* MCBaseCameraManager.swift in Sources */,
+				6B41AD081D0E502D00A6B378 /* MCCameraManager.swift in Sources */,
+				6B41AD161D0EBA6000A6B378 /* ChargePileFunc.swift in Sources */,
+				6B4618181CF834EB00721842 /* editPhoto.swift in Sources */,
+				6B41AD0C1D0E502D00A6B378 /* MCPreviewView.swift in Sources */,
+				6BEDBFEA1D0FA75800DDB9DE /* PayTableViewCell.swift in Sources */,
+				6B6ED2291D0510AC00C0CA4C /* InChargingViewController.swift in Sources */,
+				6B4E82781CEC15A700F4DD3E /* PayViewController.swift in Sources */,
+				6B41AD191D0EBB0B00A6B378 /* ChargeStation.swift in Sources */,
+				6B41AD0A1D0E502D00A6B378 /* MCMachineCodeViewController.swift in Sources */,
+				6B41AD101D0EA33200A6B378 /* user.swift in Sources */,
 				6B43716E1CE5B9B300DE6521 /* ChargingViewController.swift in Sources */,
+				6BE50DD21CF30609008212E7 /* SettingTableViewController.swift in Sources */,
 				6B436E431CE5A46A00DE6521 /* ViewController.swift in Sources */,
 				6B4371701CE5B9D200DE6521 /* MeViewController.swift in Sources */,
+				6B41AD141D0EBA4900A6B378 /* ChargePile.swift in Sources */,
 				6B5373961CE9980200A3089E /* TabBarViewController.swift in Sources */,
 				6B436E411CE5A46A00DE6521 /* AppDelegate.swift in Sources */,
+				6B41AD1D1D0EBB3400A6B378 /* ChargeRecord.swift in Sources */,
+				6B9AC3281CF4478A005D981C /* ChargingLoginViewController.swift in Sources */,
+				6B41AD0B1D0E502D00A6B378 /* MCOverlayView.swift in Sources */,
+				6B4E827C1CEC653F00F4DD3E /* MyCollectionTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1980,7 +2140,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ElectricStationBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.ElectricStationBoard;
+				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1994,7 +2154,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ElectricStationBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.bupt.exialym.ElectricStationBoard;
+				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

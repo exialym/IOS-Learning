@@ -7,32 +7,51 @@
 //
 
 import UIKit
+import Foundation
+import AVFoundation
 
-class ChargingViewController: UIViewController {
 
-    override func viewDidLoad() {
+
+class ChargingViewController: UIViewController{
+    
+    
+
+        
+        override func viewDidLoad() {
         super.viewDidLoad()
-        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
-        appdelegate.vc2 = self;
-        //self.setTabBarItem();
+        
+        
+    
+        
+        
 
         
     }
     
-    
-    //设置tabBarItem方法
-    func setTabBarItem() -> Void {
-        var img3 = UIImage(named: "tab_charging_nor.png");
-        img3 = img3!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        var img4 = UIImage(named: "tab_charging_press.png");
-        img4 = img4!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        self.navigationController?.tabBarItem.image = img3;
-        self.navigationController?.tabBarItem.selectedImage = img4;
-        self.navigationController?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.grayColor()], forState: .Normal);
-        self.navigationController?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.orangeColor()], forState: .Selected);
+ //点击按钮进行扫描
+    @IBAction func scanAction(sender: AnyObject) {
+        
+        let machineCodeVc = MCMachineCodeViewController(lineType: LineType.LineScan, moveType: MoveType.Default)
+        self.navigationController?.pushViewController(machineCodeVc, animated: true)
+        
+        machineCodeVc.didGetMachineCode = { code in
+            
+            //self.resultLabel.text = code
+            let vc = InChargingViewController();
+            self.navigationController?.pushViewController(vc, animated: true);
+            
+        }
+
+        
+
+        
         
     }
-
+    
+   
+    
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

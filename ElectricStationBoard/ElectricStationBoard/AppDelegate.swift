@@ -14,12 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    var vc1 = ViewController();
-    var vc2 = ChargingViewController();
-    var vc3 = MeViewController();
-    
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+                
         //self.setTabBarItem1();
         
     
@@ -27,16 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    func setTabBarItem1() ->Void {
-        
-        let mainSB = UIStoryboard(name: "Main", bundle: nil);
-        self.vc1 = mainSB.instantiateViewControllerWithIdentifier("holdon") as! ViewController;
-        vc1.setTabBarItem();
-        self.vc2 = mainSB.instantiateViewControllerWithIdentifier("charging") as! ChargingViewController;
-        vc2.setTabBarItem();
-        self.vc3 = mainSB.instantiateViewControllerWithIdentifier("me") as! MeViewController;
-        vc3.setTabBarItem();
-        
+//    func setTabBarItem1() ->Void {
+//        
+//        let mainSB = UIStoryboard(name: "Main", bundle: nil);
+//        self.vc1 = mainSB.instantiateViewControllerWithIdentifier("holdon") as! ViewController;
+//        vc1.setTabBarItem();
+//        self.vc2 = mainSB.instantiateViewControllerWithIdentifier("charging") as! ChargingViewController;
+//        vc2.setTabBarItem();
+//        self.vc3 = mainSB.instantiateViewControllerWithIdentifier("me") as! MeViewController;
+//        vc3.setTabBarItem();
+    
         
 //        let mainStory = UIStoryboard(name:)
 //        let vc1 = UIStoryboard.chi        //instantiateViewControllerWithIdentifier();
@@ -46,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        vc1.setTabBarItem();
 //        vc2.setTabBarItem();
 //        vc3.setTabBarItem();
-    }
+   // }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

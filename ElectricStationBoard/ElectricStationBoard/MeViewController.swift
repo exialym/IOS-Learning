@@ -12,42 +12,53 @@ import UIKit
 class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //头像
     @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+
+    
+    @IBOutlet var photoTapRecognizer: UITapGestureRecognizer!
+    override func viewWillAppear(animated: Bool) {
+        
+        self.navigationController?.navigationBarHidden = true;
+        //判断用户是否登录
+        let userDefault = NSUserDefaults.standardUserDefaults();
+        let name = userDefault.objectForKey("name");
+        //用户登录后
+        if name !== nil {
+            //更改用户名称
+            self.showUserName();
+            photoTapRecognizer.addTarget(self, action: #selector(MeViewController.editAlert));
+            self.photoSet("login_logo@2x.png");
+            
+            
+            
+        }else{
+            photoTapRecognizer.addTarget(self, action: #selector(MeViewController.pushLoginVC));
+            self.photoSet("me_avatar@2x.png");
+        }
+        
+        
+
+        
+    }
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true;
-        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
-        appdelegate.vc3 = self;
-        
-        //设置未登录时的头像
-        self.photoSet("me_avatar@2x.png");
-        //设置tabBarItem
-        self.setTabBarItem();
-        
-        
 
         
     }
     
-    //设置tabBarItem方法
-    func setTabBarItem() ->Void {
-        var img5 = UIImage(named: "tab_me_nor.png");
-        img5 = img5!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        var img6 = UIImage(named: "tab_me_press.png");
-        img6 = img6!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        print(self.navigationController)
-        self.navigationController?.tabBarItem.image = img5;
-        self.navigationController?.tabBarItem.selectedImage = img6;
-        self.navigationController?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.grayColor()], forState: .Normal);
-        self.navigationController?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.orangeColor()], forState: .Selected);
-        
-    }
+
     
     //头像未登录
     func photoSet(imageName:String) ->UIImageView {
+        
         var img = UIImage(named: imageName);
+    
         //用设置圆角的方法设置圆形
+        photo.backgroundColor = UIColor.whiteColor();
         photo.layer.cornerRadius = CGRectGetHeight(photo.bounds)/2;
         //设置photo的外围原框
         photo.layer.masksToBounds = true;
@@ -56,15 +67,54 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         return photo;
         
     }
+    //显示用户名称
+    func showUserName() ->Void {
+        let userDefault = NSUserDefaults.standardUserDefaults();
+        let name = userDefault.objectForKey("name");
+        if name !== nil {
+        nameLabel.text = String(name!);
+        }else{
+            nameLabel.text = "登录/注册";
+        }
+    }
 
+//    //用户登录后,点击头像编辑头像
+//    func editPhoto() ->Void {
+//        photo.userInteractionEnabled = true;
+//        photo.targetForAction(#selector(MeViewController.editAlert), withSender: self);
+//    }
+    //编辑头像
+    func editAlert() ->Void {
+        let alert = UIAlertView.init(title: "从照片中选择", message: "拍照上传", delegate: self, cancelButtonTitle: "取消");
+        alert.show();
+    }
+    
+    func pushLoginVC() ->Void {
+   
+        self.performSegueWithIdentifier("toLogin", sender: self);
+    }
+    //注销登录
+    @IBAction func logout(sender: AnyObject) {
+        let userDefault = NSUserDefaults.standardUserDefaults();
+        userDefault.removeObjectForKey("name");
+        userDefault.removeObjectForKey("password");
+        userDefault.synchronize();
+        let alert = UIAlertView.init(title: "注销登录", message: "确认退出?", delegate: self, cancelButtonTitle: "确定");
+        alert.show();
+        
+        
+    }
     //设置tableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return 4;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         var cell = tableView.dequeueReusableCellWithIdentifier("reuseID");
         if cell == nil {
+            
             cell = UITableViewCell(style: .Default, reuseIdentifier: "reuseID");
         }
         //cell前面的小图片
@@ -86,6 +136,48 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         cell?.userInteractionEnabled = true;
         
         return cell!;
+        
+        
+    }
+    
+    //选择tableview cell跳转相应界面
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //判断用户是否登录
+        let userDefault = NSUserDefaults.standardUserDefaults();
+        let name = userDefault.objectForKey("name");
+        if name != nil {
+        //已有用户登录情况
+        switch indexPath.row {
+            
+        case 0:
+            self.performSegueWithIdentifier("pay", sender: self);
+        case 1:
+            self.performSegueWithIdentifier("collection", sender: self);
+        case 2:
+            self.performSegueWithIdentifier("record", sender: self);
+        case 3:
+            self.performSegueWithIdentifier("setting", sender: self);
+        default:
+            break;
+        }
+        }else {
+            //未有用户登录情况
+            switch indexPath.row {
+                
+            case 0:
+                self.performSegueWithIdentifier("toLogin", sender: self);
+            case 1:
+                self.performSegueWithIdentifier("toLogin", sender: self);
+            case 2:
+                self.performSegueWithIdentifier("toLogin", sender: self);
+            case 3:
+                self.performSegueWithIdentifier("toLogin", sender: self);
+            default:
+                break;
+            }
+            
+        }
         
         
     }

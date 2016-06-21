@@ -10,19 +10,29 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    //显示页面前判断用户是否是登录状态,来判断第二个页面显示谁
+
+  
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.selectedImageTintColor = UIColor.orangeColor();
+        
+        
         setAllTabBarItem();
+
+
     }
+
+  
+    
     func setAllTabBarItem() ->Void {
         setEachTabBarItem(self.viewControllers![0])
         setEachTabBarItem(self.viewControllers![1])
         setEachTabBarItem(self.viewControllers![2])
         
     }
+    
     func setEachTabBarItem(vc:UIViewController){
         var img = UIImage(named: "tab_pile_nor.png");
         var imgSelected = UIImage(named: "tab_pile_press.png");
@@ -36,6 +46,8 @@ class TabBarViewController: UITabBarController {
         case is MeViewController:
             img = UIImage(named: "tab_me_nor.png");
             imgSelected = UIImage(named: "tab_me_press.png");
+        case is ChargingLoginViewController:
+            img = UIImage(named: "tab_charging_nor.png");
         default:break;
         }
         
@@ -47,6 +59,9 @@ class TabBarViewController: UITabBarController {
         vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.grayColor()], forState: .Normal);
         vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.orangeColor()], forState: .Selected);
     }
+
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
