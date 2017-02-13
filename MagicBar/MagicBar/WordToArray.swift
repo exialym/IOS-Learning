@@ -13,13 +13,13 @@ class WordToArray {
     let all_2_4 = 2//3
     let all_32_128 = 32//72
     
-    func drawString(strAll:String) ->[[Bool]] {
-        let str = (strAll as NSString).substringToIndex(1)
+    func drawString(_ strAll:String) ->[[Bool]] {
+        let str = (strAll as NSString).substring(to: 1)
         var data = [UInt8]()
         var code = [Int]()
         var byteCount = 0
         var lCount = 0
-        arr = [[Bool]](count: all_16_32, repeatedValue: [Bool](count: all_16_32, repeatedValue: false))
+        arr = [[Bool]](repeating: [Bool](repeating: false, count: all_16_32), count: all_16_32)
         if str <= "~" {
             return arr
         }
@@ -52,15 +52,15 @@ class WordToArray {
         return arr
     }
    
-    private func read(areaCode:Int, posCode:Int) -> [UInt8]{
-        var data = [UInt8](count: all_32_128, repeatedValue: 0)
+    fileprivate func read(_ areaCode:Int, posCode:Int) -> [UInt8]{
+        var data = [UInt8](repeating: 0, count: all_32_128)
         let area:Int = areaCode - 0xa0;
         let pos:Int = posCode - 0xa0;
-        let url = NSBundle.mainBundle().URLForResource("hzk16", withExtension: nil)
-        let dataInput = NSData(contentsOfURL: url!)
+        let url = Bundle.main.url(forResource: "hzk16", withExtension: nil)
+        let dataInput = try? Data(contentsOf: url!)
         //print(dataInput)
         let offset:Int = all_32_128 * ((area - 1) * 94 + pos - 1);
-        dataInput?.getBytes(&data, range: NSRange(location: offset, length: all_32_128))
+        (dataInput as NSData?)?.getBytes(&data, range: NSRange(location: offset, length: all_32_128))
         //print(data)
 //      in.skip(offset);
 //        data = new byte[all_32_128];
@@ -69,14 +69,14 @@ class WordToArray {
         return data;
     
     }
-    private func getByteCode(str:String)->[Int] {
-        var byteCode = [Int](count: 2, repeatedValue: 0)
-        var data = [UInt8](count: 2, repeatedValue: 0)
+    fileprivate func getByteCode(_ str:String)->[Int] {
+        var byteCode = [Int](repeating: 0, count: 2)
+        var data = [UInt8](repeating: 0, count: 2)
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-        let test  = str.dataUsingEncoding(enc, allowLossyConversion: false)
+        let test  = str.data(using: String.Encoding(rawValue: enc), allowLossyConversion: false)
         //print(test)
-        test?.getBytes(&data[0], range: NSRange(location: 0, length: 1))
-        test?.getBytes(&data[1], range: NSRange(location: 1, length: 1))
+        (test as NSData?)?.getBytes(&data[0], range: NSRange(location: 0, length: 1))
+        (test as NSData?)?.getBytes(&data[1], range: NSRange(location: 1, length: 1))
         //print(data)
         //var d = NSData(bytes: data, length: 2)
         //print(d)

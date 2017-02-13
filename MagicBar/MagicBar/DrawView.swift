@@ -12,8 +12,8 @@ class DrawView: UIView {
     let columnNum = 16//列数24
     let rowNum = 16//行数24
     let picNum = 4//画面数
-    let defaultBackgroundColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00).CGColor
-    let borderColor = UIColor.whiteColor().CGColor
+    let defaultBackgroundColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00).cgColor
+    let borderColor = UIColor.white.cgColor
     var isGrid = false {
         didSet{
             redraw()
@@ -27,15 +27,15 @@ class DrawView: UIView {
     var colorArray = [UInt8]()
     
     var nowImageNum:Int = 1
-    var nowImageColor:UIColor? = UIColor.blueColor()
+    var nowImageColor:UIColor? = UIColor.blue
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    private func drawBlocks(){
-        blockArray = [[BlockView?]](count: columnNum, repeatedValue: [BlockView?](count: rowNum, repeatedValue: nil))
-        dataArray = [[[Int]]](count: picNum, repeatedValue: [[Int]](count: columnNum, repeatedValue: [Int](count: rowNum, repeatedValue: 0)))
-        colorArray = [UInt8](count:picNum, repeatedValue:0b00000001)
+    fileprivate func drawBlocks(){
+        blockArray = [[BlockView?]](repeating: [BlockView?](repeating: nil, count: rowNum), count: columnNum)
+        dataArray = [[[Int]]](repeating: [[Int]](repeating: [Int](repeating: 0, count: rowNum), count: columnNum), count: picNum)
+        colorArray = [UInt8](repeating: 0b00000001, count: picNum)
         self.layer.borderWidth = 0//1
-        self.layer.borderColor = UIColor.blueColor().CGColor
+        self.layer.borderColor = UIColor.blue.cgColor
         blockWidth = self.bounds.width/CGFloat(columnNum)
         blockHeight = self.bounds.height/CGFloat(rowNum)
         for i in (0..<columnNum){
@@ -52,9 +52,9 @@ class DrawView: UIView {
         }
         
     }
-    func setWord(wordArray:[[Bool]]) {
-        for (rowIndex,rowArray) in wordArray.enumerate(){
-            for (columnIndex,item) in rowArray.enumerate(){
+    func setWord(_ wordArray:[[Bool]]) {
+        for (rowIndex,rowArray) in wordArray.enumerated(){
+            for (columnIndex,item) in rowArray.enumerated(){
                 blockArray[columnIndex][rowIndex]!.ischoosed = item ? 1 : 0
             }
         }
@@ -72,29 +72,29 @@ class DrawView: UIView {
             }
         }
     }
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         drawBlocks()
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let column = Int((touches.first?.locationInView(self).x)!/blockWidth)
-        let row = Int((touches.first?.locationInView(self).y)!/blockHeight)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let column = Int((touches.first?.location(in: self).x)!/blockWidth)
+        let row = Int((touches.first?.location(in: self).y)!/blockHeight)
         //print("x:\(column);y:\(row)")
         if (column<columnNum)&&(row<rowNum){
             blockArray[column][row]!.backgroundColor = nowImageColor
             blockArray[column][row]!.ischoosed = 1
         }
     }
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let column = Int((touches.first?.locationInView(self).x)!/blockWidth)
-        let row = Int((touches.first?.locationInView(self).y)!/blockHeight)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let column = Int((touches.first?.location(in: self).x)!/blockWidth)
+        let row = Int((touches.first?.location(in: self).y)!/blockHeight)
         //print("x:\(column);y:\(row)")
         if (column<columnNum)&&(row<rowNum)&&(column>=0)&&(row>=0){
             blockArray[column][row]!.backgroundColor = nowImageColor
             blockArray[column][row]!.ischoosed = 1
         }
     }
-    func saveToDataArray(changeTo:Int){
+    func saveToDataArray(_ changeTo:Int){
         let tempDataArray = blockArray.map({ (row:[BlockView?]) -> [Int] in
                 return row.map({ (block:BlockView?) -> Int in
                     return (block?.ischoosed)!
@@ -112,7 +112,7 @@ class DrawView: UIView {
         getColors()
         redraw()
     }
-    func setColors(nowImageColorString:UInt8){
+    func setColors(_ nowImageColorString:UInt8){
         colorArray[nowImageNum-1] = nowImageColorString
         getColors()
         redraw()
@@ -121,28 +121,28 @@ class DrawView: UIView {
         //print(colorArray)
         switch colorArray[nowImageNum-1] {
         case 0b00000001:
-            nowImageColor = UIColor.blueColor()
+            nowImageColor = UIColor.blue
         case 0b00000010:
-            nowImageColor = UIColor.greenColor()
+            nowImageColor = UIColor.green
         case 0b00000100:
-            nowImageColor = UIColor.redColor()
+            nowImageColor = UIColor.red
         case 0b00001000:
-            nowImageColor = UIColor.yellowColor()
+            nowImageColor = UIColor.yellow
         case 0b00010000:
-            nowImageColor = UIColor.magentaColor()
+            nowImageColor = UIColor.magenta
         case 0b00100000:
-            nowImageColor = UIColor.whiteColor()
+            nowImageColor = UIColor.white
         case 0b01000000:
-            nowImageColor = UIColor.cyanColor()
+            nowImageColor = UIColor.cyan
         default:
-            nowImageColor = UIColor.blueColor()
+            nowImageColor = UIColor.blue
         }
     }
-    func sendData() -> [NSData]{
+    func sendData() -> [Data]{
         saveToDataArray(nowImageNum)
-        var dataValue = [NSData]()
-        var tempData = [[UInt8]](count: picNum, repeatedValue: [UInt8]())
-        for (index, image) in dataArray.enumerate() {
+        var dataValue = [Data]()
+        var tempData = [[UInt8]](repeating: [UInt8](), count: picNum)
+        for (index, image) in dataArray.enumerated() {
             tempData[index].append(colorArray[index])
             for row in image {
                 var tempchar:UInt8 = 0b00000000
@@ -166,7 +166,7 @@ class DrawView: UIView {
             }
         }
         for i in (0..<tempData.count) {
-            dataValue.append(NSData(bytes: tempData[i], length: 33))//73
+            dataValue.append(Data(bytes: UnsafePointer<UInt8>(tempData[i]), count: 33))//73
         }
         print(dataValue)
         return dataValue

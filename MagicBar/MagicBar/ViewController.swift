@@ -16,9 +16,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var deviceList = [CBPeripheral]()
     var writeCharacteristic:CBCharacteristic?
     
-    @IBAction func searchDevice(sender: UIButton) {
+    @IBAction func searchDevice(_ sender: UIButton) {
         //centralManager?.scanForPeripheralsWithServices(nil, options: nil)
-        performSegueWithIdentifier("showDraw", sender: "繁")
+        performSegue(withIdentifier: "showDraw", sender: "繁")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,30 +27,30 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     // MARK: -BluetoothCentralManager
     
-    func centralManagerDidUpdateState(central: CBCentralManager) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
-        case CBCentralManagerState.PoweredOn:
+        case CBManagerState.poweredOn:
             print("蓝牙打开啦")
-            centralManager?.scanForPeripheralsWithServices(nil, options: nil)
-        case CBCentralManagerState.Unauthorized:
+            centralManager?.scanForPeripherals(withServices: nil, options: nil)
+        case CBManagerState.unauthorized:
             print("没有授权")
-        case CBCentralManagerState.Unsupported:
+        case CBManagerState.unsupported:
             print("不支持")
-        case CBCentralManagerState.PoweredOff:
+        case CBManagerState.poweredOff:
             print("把蓝牙打开了啦")
         default:
             print("meximexi")
         }
     }
     
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if !deviceList.contains(peripheral) {
             deviceList.append(peripheral)
         }
         deviceTable.reloadData()
     }
     
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         centralManager?.stopScan()
         self.peripheral = peripheral
         self.peripheral?.delegate = self
@@ -58,31 +58,31 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print("连接成功")
     }
     
-    func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("连接失败＝＝＝\(error)")
     }
     
     // MARK: -BluetoothPeripheral
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
             print("发现服务出现错误")
             return
         }
         for service in peripheral.services! {
-            print("服务的UUID\(service.UUID)")
-            peripheral.discoverCharacteristics(nil, forService: service)
+            print("服务的UUID\(service.uuid)")
+            peripheral.discoverCharacteristics(nil, for: service)
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if error != nil {
             print("发现错误特征")
             return
         }
         for characteristic in service.characteristics! {
-            print("特征的UUID:\(characteristic.UUID)")
-            switch characteristic.UUID.description {
+            print("特征的UUID:\(characteristic.uuid)")
+            switch characteristic.uuid.description {
             case "Manufacturer Name String": fallthrough
             case "Battery Level":fallthrough
             case "Model Number String":fallthrough
@@ -92,34 +92,34 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             case "Firmware Revision String":fallthrough
             case "Serial Number String":fallthrough
             case "PnP ID":
-                self.peripheral?.readValueForCharacteristic(characteristic)
+                self.peripheral?.readValue(for: characteristic)
             //case "FEC8":fallthrough
             //case "FFF2":fallthrough
             //case "FFF1":fallthrough
             //case "FEC7":
             case "FFE1":
                 writeCharacteristic = characteristic
-                performSegueWithIdentifier("showDraw", sender: "繁")
+                performSegue(withIdentifier: "showDraw", sender: "繁")
             default:break
             }
             
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
-            print("接收特征发来的数据错误，特征UUID：\(characteristic.UUID),错误数据：\(characteristic.value),错误：\(error?.localizedDescription)")
+            print("接收特征发来的数据错误，特征UUID：\(characteristic.uuid),错误数据：\(characteristic.value),错误：\(error?.localizedDescription)")
             return
         }
         if let value = characteristic.value {
-            if let stringValue = NSString(data: value, encoding: NSUTF8StringEncoding) {
-                print("\(characteristic.UUID.description):\(stringValue)")
+            if let stringValue = NSString(data: value, encoding: String.Encoding.utf8.rawValue) {
+                print("\(characteristic.uuid.description):\(stringValue)")
             }
         }
     }
     
     //用于检测中心向外设写数据是否成功
-    func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if(error != nil){
             print("发送数据失败!error信息:\(error)")
         }else{
@@ -129,34 +129,34 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deviceList.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Equipment", forIndexPath: indexPath) as! EquipmentTableViewCell
-        let device = deviceList[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Equipment", for: indexPath) as! EquipmentTableViewCell
+        let device = deviceList[(indexPath as NSIndexPath).row]
         // Configure the cell...
         cell.name.text = device.name
-        cell.info.text = device.identifier.UUIDString
+        cell.info.text = device.identifier.uuidString
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        centralManager?.connectPeripheral(deviceList[indexPath.row], options: nil)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        centralManager?.connect(deviceList[(indexPath as NSIndexPath).row], options: nil)
         //performSegueWithIdentifier("showDraw", sender: indexPath.row)
-        print("连接\(deviceList[indexPath.row].name)")
+        print("连接\(deviceList[(indexPath as NSIndexPath).row].name)")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "showDraw":
-            if let destination = segue.destinationViewController as? DrawViewController {
+            if let destination = segue.destination as? DrawViewController {
                 if let data = sender as? String {
                     destination.data = data
                     destination.connectedDevice = self.peripheral
