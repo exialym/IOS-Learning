@@ -13,11 +13,11 @@ let MCCameraErrorDomain = "com.MACHAO.MCCameraErrorDomain"
 let MCThumbnailCreatedNotification = "MCThumbnailCreated"
 
 enum MCCameraErrorCode : Int {
-    case FailedToAddInput = 98
-    case FailedToAddOutput
+    case failedToAddInput = 98
+    case failedToAddOutput
 }
 
-public class MCBaseCameraManager: NSObject {
+open class MCBaseCameraManager: NSObject {
     
     var captureSession: AVCaptureSession!
     weak var delegate: MCCameraManagerDelegate?
@@ -41,7 +41,7 @@ public class MCBaseCameraManager: NSObject {
             return (false,outputResult.1)
         }
         
-        self.videoQueue = dispatch_queue_create("com.MC.VideoQueue", DISPATCH_QUEUE_SERIAL)
+        self.videoQueue = DispatchQueue(label: "com.MC.VideoQueue", attributes: [])
         
         return (true,inputResult.1 != nil ? inputResult.1 : outputResult.1)
     }
@@ -49,9 +49,9 @@ public class MCBaseCameraManager: NSObject {
     // start session
     func startSession() {
         
-        if !self.captureSession.running {
+        if !self.captureSession.isRunning {
             
-            dispatch_async(self.videoQueue!, {
+            self.videoQueue!.async(execute: {
                 
                 self.captureSession.startRunning()
             })
@@ -61,9 +61,9 @@ public class MCBaseCameraManager: NSObject {
     // stop session
     func stopSession() {
         
-        if self.captureSession.running {
+        if self.captureSession.isRunning {
             
-            dispatch_async(self.videoQueue!, {
+            self.videoQueue!.async(execute: {
                 
                 self.captureSession.stopRunning()
             })
@@ -72,9 +72,9 @@ public class MCBaseCameraManager: NSObject {
     
     //MARK: - private parameter
     
-    private var activeVideoInput: AVCaptureDeviceInput?
-    private var imageOutput: AVCaptureStillImageOutput?
-    private var videoQueue: dispatch_queue_t?
+    fileprivate var activeVideoInput: AVCaptureDeviceInput?
+    fileprivate var imageOutput: AVCaptureStillImageOutput?
+    fileprivate var videoQueue: DispatchQueue?
     
     //MARK: - private method
     
@@ -90,7 +90,7 @@ public class MCBaseCameraManager: NSObject {
         var inputError: NSError?
         var videoInput: AVCaptureDeviceInput?
         // set up default camera device
-        let videoDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        let videoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
             
             videoInput = try AVCaptureDeviceInput(device: videoDevice)
@@ -114,7 +114,7 @@ public class MCBaseCameraManager: NSObject {
             else {
                 
                 inputError = NSError(domain: MCCameraErrorDomain,
-                                     code:MCCameraErrorCode.FailedToAddInput.rawValue ,
+                                     code:MCCameraErrorCode.failedToAddInput.rawValue ,
                                      userInfo: [NSLocalizedDescriptionKey:"Failed to add video input."])
                 return (false,inputError)
             }
@@ -148,7 +148,7 @@ public class MCBaseCameraManager: NSObject {
         else {
             
             inputError = NSError(domain: MCCameraErrorDomain,
-                                 code:MCCameraErrorCode.FailedToAddOutput.rawValue ,
+                                 code:MCCameraErrorCode.failedToAddOutput.rawValue ,
                                  userInfo: [NSLocalizedDescriptionKey:"Failed to still image output."])
             return (false,inputError)
         }
@@ -159,9 +159,9 @@ public class MCBaseCameraManager: NSObject {
     //MARK: - device configure
     
     // get device by position
-    func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice? {
+    func cameraWithPosition(_ position: AVCaptureDevicePosition) -> AVCaptureDevice? {
         
-        let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
         
         for device in devices as! [AVCaptureDevice] {
             
@@ -187,13 +187,13 @@ public class MCBaseCameraManager: NSObject {
         
         if cameraCount() > 1 {
             
-            if activeCamera().position == AVCaptureDevicePosition.Back {
+            if activeCamera().position == AVCaptureDevicePosition.back {
                 
-                device = cameraWithPosition(AVCaptureDevicePosition.Front)
+                device = cameraWithPosition(AVCaptureDevicePosition.front)
             }
             else {
                 
-                device = cameraWithPosition(AVCaptureDevicePosition.Back)
+                device = cameraWithPosition(AVCaptureDevicePosition.back)
             }
         }
         
@@ -203,7 +203,7 @@ public class MCBaseCameraManager: NSObject {
     // get camera count
     func cameraCount() -> Int {
         
-        return AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count
+        return AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo).count
     }
     
     // is can switch camera

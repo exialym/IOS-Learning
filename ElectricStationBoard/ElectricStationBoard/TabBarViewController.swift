@@ -33,7 +33,7 @@ class TabBarViewController: UITabBarController {
         
     }
     
-    func setEachTabBarItem(vc:UIViewController){
+    func setEachTabBarItem(_ vc:UIViewController){
         var img = UIImage(named: "tab_pile_nor.png");
         var imgSelected = UIImage(named: "tab_pile_press.png");
         switch vc.childViewControllers[0] {
@@ -51,13 +51,13 @@ class TabBarViewController: UITabBarController {
         default:break;
         }
         
-        img = img!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+        img = img!.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
         
-        imgSelected = imgSelected!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+        imgSelected = imgSelected!.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
         vc.tabBarItem.image = img;
         vc.tabBarItem.selectedImage = imgSelected;
-        vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.grayColor()], forState: .Normal);
-        vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.orangeColor()], forState: .Selected);
+        vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.gray], for: UIControlState());
+        vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.orange], for: .selected);
     }
 
     

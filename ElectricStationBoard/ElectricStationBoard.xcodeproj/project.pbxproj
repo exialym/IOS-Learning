@@ -1518,13 +1518,16 @@
 					6B436E3C1CE5A46A00DE6521 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = NR25X4M65Y;
+						LastSwiftMigration = 0800;
 					};
 					6B436E501CE5A46A00DE6521 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 6B436E3C1CE5A46A00DE6521;
 					};
 					6B436E5B1CE5A46A00DE6521 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 6B436E3C1CE5A46A00DE6521;
 					};
 				};
@@ -2143,6 +2146,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2157,6 +2161,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -2168,6 +2173,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElectricStationBoard.app/ElectricStationBoard";
 			};
 			name = Debug;
@@ -2180,6 +2186,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElectricStationBoard.app/ElectricStationBoard";
 			};
 			name = Release;
@@ -2191,6 +2198,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ElectricStationBoard;
 			};
 			name = Debug;
@@ -2202,6 +2210,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Iris.ElectricStationBoardUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ElectricStationBoard;
 			};
 			name = Release;

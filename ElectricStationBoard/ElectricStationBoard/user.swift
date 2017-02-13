@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class user: NSObject {
+open class user: NSObject {
     
-    public var teleNumb = String();
-    public var userPhoto = UIImage();
-    public var payWay = String();
-    public var collection : Array<Int> = [];
-    public var recordChargeArr : Array<Int> = [];
+    open var teleNumb = String();
+    open var userPhoto = UIImage();
+    open var payWay = String();
+    open var collection : Array<Int> = [];
+    open var recordChargeArr : Array<Int> = [];
     
     
     

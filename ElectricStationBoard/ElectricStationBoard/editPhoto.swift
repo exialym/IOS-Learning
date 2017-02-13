@@ -32,23 +32,23 @@ class editPhoto: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1;
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 3;
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "reuse";
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         let titleArr = ["头像","用户名","手机号"];
-        cell.textLabel?.text = titleArr[indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator;
+        cell.textLabel?.text = titleArr[(indexPath as NSIndexPath).row];
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator;
         
 
         

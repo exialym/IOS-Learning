@@ -15,9 +15,9 @@ class SettingTableViewController: UITableViewController {
 //    var bt = UIButton();
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false;
+        self.navigationController?.isNavigationBarHidden = false;
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        footerView.backgroundColor = UIColor.blackColor()
+        footerView.backgroundColor = UIColor.black
         (view as? UITableView)?.tableFooterView = footerView
 
 //        bt = UIButton(type: .System);
@@ -64,15 +64,15 @@ class SettingTableViewController: UITableViewController {
    
     //注销
     func logout() ->Void {
-        let userDefault = NSUserDefaults.standardUserDefaults();
-        userDefault.removeObjectForKey("name");
-        userDefault.removeObjectForKey("password");
+        let userDefault = UserDefaults.standard;
+        userDefault.removeObject(forKey: "name");
+        userDefault.removeObject(forKey: "password");
         userDefault.synchronize();
-        self.dismissViewControllerAnimated(true, completion: nil);
+        self.dismiss(animated: true, completion: nil);
         //跳转到之前页面
         let story = UIStoryboard(name: "Main", bundle: nil);
-        let vc3 = story.instantiateViewControllerWithIdentifier("me");
-        self.showViewController(vc3, sender: self);
+        let vc3 = story.instantiateViewController(withIdentifier: "me");
+        self.show(vc3, sender: self);
         print("注销成功");
     }
 

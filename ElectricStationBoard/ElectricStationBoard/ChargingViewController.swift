@@ -29,9 +29,9 @@ class ChargingViewController: UIViewController{
     }
     
  //点击按钮进行扫描
-    @IBAction func scanAction(sender: AnyObject) {
+    @IBAction func scanAction(_ sender: AnyObject) {
         
-        let machineCodeVc = MCMachineCodeViewController(lineType: LineType.LineScan, moveType: MoveType.Default)
+        let machineCodeVc = MCMachineCodeViewController(lineType: LineType.lineScan, moveType: MoveType.default)
         self.navigationController?.pushViewController(machineCodeVc, animated: true)
         
         machineCodeVc.didGetMachineCode = { code in

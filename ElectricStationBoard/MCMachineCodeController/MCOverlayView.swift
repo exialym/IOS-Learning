@@ -9,17 +9,17 @@
 import UIKit
 
 enum LineType {
-    case None      // none
-    case Default   // line color transition
-    case LineScan  // line
-    case Grid      // grid style
+    case none      // none
+    case `default`   // line color transition
+    case lineScan  // line
+    case grid      // grid style
 }
 
 
 enum MoveType {
-    case None      // none
-    case Default   // up to down
-    case UpAndDown  // up and down
+    case none      // none
+    case `default`   // up to down
+    case upAndDown  // up and down
 }
 
 var w: CGFloat {
@@ -30,31 +30,31 @@ var w: CGFloat {
     }
 }
 let h: CGFloat = w
-let screenw: CGFloat = UIScreen.mainScreen().bounds.size.width
-let screenh: CGFloat = UIScreen.mainScreen().bounds.size.height
+let screenw: CGFloat = UIScreen.main.bounds.size.width
+let screenh: CGFloat = UIScreen.main.bounds.size.height
 let moveSpeed: CGFloat = 1.0
 
-public class MCOverlayView: UIView {
+open class MCOverlayView: UIView {
     
     var scanRect: CGRect {
         get {
-            return CGRectMake((screenw - w) / 2, (screenw - h) / 2, w, h)
+            return CGRect(x: (screenw - w) / 2, y: (screenw - h) / 2, width: w, height: h)
         }
     }
     
-    private var lineType: LineType = LineType.Default
-    private var moveType: MoveType = MoveType.Default
-    private var lineColor: UIColor = UIColor.greenColor()
-    private var tempY: CGFloat = 0
-    private var lineView: UIView?
-    private var displayLink: CADisplayLink?
-    private var moveToEdge: Bool = false
+    fileprivate var lineType: LineType = LineType.default
+    fileprivate var moveType: MoveType = MoveType.default
+    fileprivate var lineColor: UIColor = UIColor.green
+    fileprivate var tempY: CGFloat = 0
+    fileprivate var lineView: UIView?
+    fileprivate var displayLink: CADisplayLink?
+    fileprivate var moveToEdge: Bool = false
     
     //MARK: - init
     init(lineType: LineType , moveType: MoveType, lineColor: UIColor) {
         
-        super.init(frame: CGRectZero)
-        self.backgroundColor = UIColor.clearColor()
+        super.init(frame: CGRect.zero)
+        self.backgroundColor = UIColor.clear
         
         self.lineType = lineType
         self.moveType = moveType
@@ -67,7 +67,7 @@ public class MCOverlayView: UIView {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -81,17 +81,17 @@ public class MCOverlayView: UIView {
     func startMoving() {
         
         switch self.lineType {
-        case .Default:
+        case .default:
             if self.displayLink == nil {
                 
                 self.displayLink = CADisplayLink(target: self, selector: #selector(MCOverlayView.beginLineAnimation))
-                self.displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+                self.displayLink!.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
             }
-        case .LineScan:
+        case .lineScan:
             
             beginLineAnimation()
             
-        case .Grid:
+        case .grid:
             
             beginGridAnimation()
             
@@ -115,19 +115,19 @@ public class MCOverlayView: UIView {
     func beginLineAnimation() {
         
         switch self.lineType {
-        case .Default:
+        case .default:
             
             var frame = self.lineView!.frame
             self.moveToEdge ? (frame.origin.y -= moveSpeed) : (frame.origin.y += moveSpeed)
             self.lineView!.frame = frame
             
             // scan line shadow
-            self.lineView?.layer.shadowColor = self.lineView?.backgroundColor?.CGColor
+            self.lineView?.layer.shadowColor = self.lineView?.backgroundColor?.cgColor
             self.lineView?.layer.shadowOpacity = 1
-            self.lineView?.layer.shadowOffset = CGSizeMake(0, -3)
+            self.lineView?.layer.shadowOffset = CGSize(width: 0, height: -3)
             
             switch self.moveType {
-            case .Default:
+            case .default:
                 
                 // reset lineView frame
                 if self.lineView!.frame.origin.y - self.tempY >= h {
@@ -135,7 +135,7 @@ public class MCOverlayView: UIView {
                     resetLineViewFrameBack()
                 }
              
-            case .UpAndDown:
+            case .upAndDown:
                 
                 if self.lineView!.frame.origin.y - self.tempY >= h {
                     
@@ -149,11 +149,11 @@ public class MCOverlayView: UIView {
                 break
             }
          
-        case .LineScan:
+        case .lineScan:
             
             lineViewMovedWithLineType(self.lineType)
             
-        case .Grid:
+        case .grid:
             
             break
             
@@ -162,24 +162,24 @@ public class MCOverlayView: UIView {
         }
     }
     
-    func lineViewMovedWithLineType(lineType: LineType) {
+    func lineViewMovedWithLineType(_ lineType: LineType) {
         
-        UIView.animateWithDuration(2.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             
             var frame = self.lineView!.frame
             frame.origin.y += h - 2
             self.lineView!.frame = frame
             
-            }) { (finished) in
+            }, completion: { (finished) in
                 
-                if self.moveType == .Default {
+                if self.moveType == .default {
                     
                     self.resetLineViewFrameBack()
                     self.lineViewMovedWithLineType(lineType)
                 }
                 else {
                     
-                    UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { 
+                    UIView.animate(withDuration: 2.0, delay: 0, options: UIViewAnimationOptions(), animations: { 
                         
                             self.resetLineViewFrameBack()
                         
@@ -188,7 +188,7 @@ public class MCOverlayView: UIView {
                              self.lineViewMovedWithLineType(lineType)
                     })
                 }
-        }
+        }) 
     }
     /**
      begin the grid animation
@@ -198,13 +198,13 @@ public class MCOverlayView: UIView {
         let imageView = self.lineView?.subviews.first as? UIImageView
         if let imageView = imageView {
             
-            UIView.animateWithDuration(1.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            UIView.animate(withDuration: 1.5, delay: 0.1, options: UIViewAnimationOptions(), animations: {
                 
-                imageView.transform = CGAffineTransformTranslate(imageView.transform, 0, h)
+                imageView.transform = imageView.transform.translatedBy(x: 0, y: h)
                 
                 }, completion: { (finished) in
                     
-                    imageView.frame = CGRectMake(0, -h, self.lineView!.frame.size.width, self.lineView!.frame.size.height)
+                    imageView.frame = CGRect(x: 0, y: -h, width: self.lineView!.frame.size.width, height: self.lineView!.frame.size.height)
                     self.startMoving()
             })
      
@@ -223,29 +223,29 @@ public class MCOverlayView: UIView {
     //MARK: - setup view
     func setupLineView() {
         
-        if self.moveType == .None { return }
+        if self.moveType == .none { return }
         
-        self.lineView = UIView(frame: CGRectMake((screenw - w) * 0.5, screenh / 3.5, w, 2))
+        self.lineView = UIView(frame: CGRect(x: (screenw - w) * 0.5, y: screenh / 3.5, width: w, height: 2))
         self.addSubview(self.lineView!)
         
-        if self.lineType == .Default {
+        if self.lineType == .default {
             
             self.lineView!.backgroundColor = self.lineColor
             self.tempY = self.lineView!.frame.origin.y
         }
         
-        if self.lineType == .LineScan {
+        if self.lineType == .lineScan {
             
-            self.lineView?.backgroundColor = UIColor.clearColor()
+            self.lineView?.backgroundColor = UIColor.clear
             self.tempY = self.lineView!.frame.origin.y
             
             let imageView = UIImageView(image: UIImage(named: "line@2x"))
-            imageView.frame = CGRectMake(0, 0, self.lineView!.frame.size.width, self.lineView!.frame.size.height)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.frame = CGRect(x: 0, y: 0, width: self.lineView!.frame.size.width, height: self.lineView!.frame.size.height)
+            imageView.contentMode = UIViewContentMode.scaleAspectFill
             self.lineView!.addSubview(imageView)
         }
         
-        if self.lineType == .Grid {
+        if self.lineType == .grid {
             
             self.lineView!.clipsToBounds = true
             
@@ -255,8 +255,8 @@ public class MCOverlayView: UIView {
             self.lineView!.frame = frame
             
             let imageView = UIImageView(image: UIImage(named: "scan_net@2x"))
-            imageView.frame = CGRectMake(0, -h, self.lineView!.frame.size.width, self.lineView!.frame.size.height)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.frame = CGRect(x: 0, y: -h, width: self.lineView!.frame.size.width, height: self.lineView!.frame.size.height)
+            imageView.contentMode = UIViewContentMode.scaleAspectFill
             self.lineView!.addSubview(imageView)
         }
         
@@ -265,85 +265,85 @@ public class MCOverlayView: UIView {
     }
     
     //MARK: - override drawRect method
-    override public func drawRect(rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
        
         let originx: CGFloat = (rect.size.width - w ) / 2
         let originy: CGFloat = rect.size.height / 3.5
         let maggin: CGFloat = 15
         
         let cornerColor: UIColor = UIColor(red: 0/255.0, green: 153/255.0, blue: 204/255.0, alpha: 1.0)
-        let frameColor: UIColor = UIColor.whiteColor()
+        let frameColor: UIColor = UIColor.white
         
         let ctx = UIGraphicsGetCurrentContext()
         
-        CGContextSetRGBFillColor(ctx, 40/255.0, 40/255.0, 40/255.0, 0.5);
-        CGContextFillRect(ctx, rect);
+        ctx?.setFillColor(red: 40/255.0, green: 40/255.0, blue: 40/255.0, alpha: 0.5);
+        ctx?.fill(rect);
         
         // framePath
-        let framePath: UIBezierPath = UIBezierPath(rect: CGRectMake(originx, originy, w, h))
-        CGContextAddPath(ctx, framePath.CGPath)
-        CGContextSetStrokeColorWithColor(ctx, frameColor.CGColor)
-        CGContextSetLineWidth(ctx, 0.6)
-        CGContextStrokePath(ctx)
+        let framePath: UIBezierPath = UIBezierPath(rect: CGRect(x: originx, y: originy, width: w, height: h))
+        ctx?.addPath(framePath.cgPath)
+        ctx?.setStrokeColor(frameColor.cgColor)
+        ctx?.setLineWidth(0.6)
+        ctx?.strokePath()
         
         // set scan rect
-        CGContextClearRect(ctx, CGRectMake(originx, originy, w, h))
+        ctx?.clear(CGRect(x: originx, y: originy, width: w, height: h))
         
         
         
         // left top corner
         let leftTopPath = UIBezierPath()
-        leftTopPath.moveToPoint(CGPointMake(originx, originy + maggin))
-        leftTopPath.addLineToPoint(CGPointMake(originx, originy))
-        leftTopPath.addLineToPoint(CGPointMake(originx + maggin, originy))
-        CGContextAddPath(ctx, leftTopPath.CGPath)
-        CGContextSetStrokeColorWithColor(ctx, cornerColor.CGColor)
-        CGContextSetLineWidth(ctx, 1.6)
-        CGContextStrokePath(ctx)
+        leftTopPath.move(to: CGPoint(x: originx, y: originy + maggin))
+        leftTopPath.addLine(to: CGPoint(x: originx, y: originy))
+        leftTopPath.addLine(to: CGPoint(x: originx + maggin, y: originy))
+        ctx?.addPath(leftTopPath.cgPath)
+        ctx?.setStrokeColor(cornerColor.cgColor)
+        ctx?.setLineWidth(1.6)
+        ctx?.strokePath()
         
         // right top corner
         let rightTopPath = UIBezierPath()
-        rightTopPath.moveToPoint(CGPointMake(originx + w - maggin, originy))
-        rightTopPath.addLineToPoint(CGPointMake(originx + w, originy))
-        rightTopPath.addLineToPoint(CGPointMake(originx + w, originy + maggin))
-        CGContextAddPath(ctx, rightTopPath.CGPath)
-        CGContextSetStrokeColorWithColor(ctx, cornerColor.CGColor)
-        CGContextSetLineWidth(ctx, 1.6)
-        CGContextStrokePath(ctx)
+        rightTopPath.move(to: CGPoint(x: originx + w - maggin, y: originy))
+        rightTopPath.addLine(to: CGPoint(x: originx + w, y: originy))
+        rightTopPath.addLine(to: CGPoint(x: originx + w, y: originy + maggin))
+        ctx?.addPath(rightTopPath.cgPath)
+        ctx?.setStrokeColor(cornerColor.cgColor)
+        ctx?.setLineWidth(1.6)
+        ctx?.strokePath()
         
         // left bottom corner
         let leftBottomPath = UIBezierPath()
-        leftBottomPath.moveToPoint(CGPointMake(originx, originy + h - maggin))
-        leftBottomPath.addLineToPoint(CGPointMake(originx , originy + h))
-        leftBottomPath.addLineToPoint(CGPointMake(originx + maggin, originy + h))
-        CGContextAddPath(ctx, leftBottomPath.CGPath)
-        CGContextSetStrokeColorWithColor(ctx, cornerColor.CGColor)
-        CGContextSetLineWidth(ctx, 1.6)
-        CGContextStrokePath(ctx)
+        leftBottomPath.move(to: CGPoint(x: originx, y: originy + h - maggin))
+        leftBottomPath.addLine(to: CGPoint(x: originx , y: originy + h))
+        leftBottomPath.addLine(to: CGPoint(x: originx + maggin, y: originy + h))
+        ctx?.addPath(leftBottomPath.cgPath)
+        ctx?.setStrokeColor(cornerColor.cgColor)
+        ctx?.setLineWidth(1.6)
+        ctx?.strokePath()
         
         // right bottom corner
         let rightBottomPath = UIBezierPath()
-        rightBottomPath.moveToPoint(CGPointMake(originx + w , originy + h - maggin))
-        rightBottomPath.addLineToPoint(CGPointMake(originx + w, originy + h))
-        rightBottomPath.addLineToPoint(CGPointMake(originx + w - maggin, originy + h))
-        CGContextAddPath(ctx, rightBottomPath.CGPath)
-        CGContextSetStrokeColorWithColor(ctx, cornerColor.CGColor)
-        CGContextSetLineWidth(ctx, 1.6)
-        CGContextStrokePath(ctx)
+        rightBottomPath.move(to: CGPoint(x: originx + w , y: originy + h - maggin))
+        rightBottomPath.addLine(to: CGPoint(x: originx + w, y: originy + h))
+        rightBottomPath.addLine(to: CGPoint(x: originx + w - maggin, y: originy + h))
+        ctx?.addPath(rightBottomPath.cgPath)
+        ctx?.setStrokeColor(cornerColor.cgColor)
+        ctx?.setLineWidth(1.6)
+        ctx?.strokePath()
         
         // draw title
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Center
+        paragraphStyle.alignment = NSTextAlignment.center
         
         let attr = [NSParagraphStyleAttributeName: paragraphStyle ,
-                    NSFontAttributeName: UIFont.systemFontOfSize(12.0) ,
-                    NSForegroundColorAttributeName: UIColor.whiteColor()]
+                    NSFontAttributeName: UIFont.systemFont(ofSize: 12.0) ,
+                    NSForegroundColorAttributeName: UIColor.white]
         let title = "将二维码/条码放入框内, 即可自动扫描"
             
-        let size = (title as NSString).sizeWithAttributes(attr)
+        let size = (title as NSString).size(attributes: attr)
         
-        let r = CGRectMake(0, originy + h + 15, rect.size.width, size.height)
-        (title as NSString).drawInRect(r, withAttributes: attr)
+        let r = CGRect(x: 0, y: originy + h + 15, width: rect.size.width, height: size.height)
+        (title as NSString).draw(in: r, withAttributes: attr)
         
         
 

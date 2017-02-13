@@ -9,19 +9,19 @@
 import UIKit
 import AVFoundation
 
-public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate,AVCaptureMetadataOutputObjectsDelegate {
+open class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate,AVCaptureMetadataOutputObjectsDelegate {
     
     
-    public var didGetMachineCode: ((code: String) -> Void)?
+    open var didGetMachineCode: ((_ code: String) -> Void)?
     //自己添加
-    public var defaultDevice : AVCaptureDevice = .defaultDeviceWithMediaType(AVMediaTypeVideo);
+    open var defaultDevice : AVCaptureDevice = .defaultDevice(withMediaType: AVMediaTypeVideo);
     
-    private var previewView: MCPreviewView!
-    private var cameraManager: MCCameraManager!
-    private var isGetCode = false
-    private var lineType: LineType = LineType.Grid
-    private var moveType: MoveType = MoveType.Default
-    private var statusBarStyle: UIStatusBarStyle!
+    fileprivate var previewView: MCPreviewView!
+    fileprivate var cameraManager: MCCameraManager!
+    fileprivate var isGetCode = false
+    fileprivate var lineType: LineType = LineType.grid
+    fileprivate var moveType: MoveType = MoveType.default
+    fileprivate var statusBarStyle: UIStatusBarStyle!
     
     init(lineType: LineType , moveType: MoveType) {
      
@@ -36,19 +36,19 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         super.init(coder: aDecoder)
     }
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
         super.init(nibName: nil, bundle: nil)
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
         setupNavWithIsHideNav(true)
     }
 
-    override public func viewWillDisappear(animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         
@@ -58,13 +58,13 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         self.previewView.overlayView.stopMoving()
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = UIColor.black
         
-        self.statusBarStyle = UIApplication.sharedApplication().statusBarStyle
+        self.statusBarStyle = UIApplication.shared.statusBarStyle
         
         setupPreviewView()
         setupBackView()
@@ -96,31 +96,31 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         self.view.addSubview(previewView)
         
         let contraint1 = NSLayoutConstraint(item: previewView,
-                                            attribute: NSLayoutAttribute.Left,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.left,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Left,
+                                            attribute: NSLayoutAttribute.left,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint2 = NSLayoutConstraint(item: previewView,
-                                            attribute: NSLayoutAttribute.Right,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.right,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Right,
+                                            attribute: NSLayoutAttribute.right,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint3 = NSLayoutConstraint(item: previewView,
-                                            attribute: NSLayoutAttribute.Top,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.top,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Top,
+                                            attribute: NSLayoutAttribute.top,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint4 = NSLayoutConstraint(item: previewView,
-                                            attribute: NSLayoutAttribute.Bottom,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.bottom,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Bottom,
+                                            attribute: NSLayoutAttribute.bottom,
                                             multiplier: 1.0,
                                             constant: 0.0)
         self.view.addConstraints([contraint1,contraint2,contraint3,contraint4])
@@ -130,104 +130,104 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         
         let backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(named: "back"), forState: UIControlState.Normal)
-        backButton.addTarget(self, action: #selector(MCMachineCodeViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
+        backButton.setImage(UIImage(named: "back"), for: UIControlState())
+        backButton.addTarget(self, action: #selector(MCMachineCodeViewController.backAction), for: UIControlEvents.touchUpInside)
         self.view.addSubview(backButton)
         
         let contraint1 = NSLayoutConstraint(item: backButton,
-                                            attribute: NSLayoutAttribute.Left,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.left,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Left,
+                                            attribute: NSLayoutAttribute.left,
                                             multiplier: 1.0,
                                             constant: 10.0)
         let contraint2 = NSLayoutConstraint(item: backButton,
-                                            attribute: NSLayoutAttribute.Top,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.top,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Top,
+                                            attribute: NSLayoutAttribute.top,
                                             multiplier: 1.0,
                                             constant: 20.0)
         let contraint3 = NSLayoutConstraint(item: backButton,
-                                            attribute: NSLayoutAttribute.Width,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.width,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 50.0)
         let contraint4 = NSLayoutConstraint(item: backButton,
-                                            attribute: NSLayoutAttribute.Height,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.height,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 50.0)
         self.view.addConstraints([contraint1,contraint2,contraint3,contraint4])
         //添加另外两个button
         let btnLight = UIButton();
         btnLight.translatesAutoresizingMaskIntoConstraints = false;
-        btnLight.backgroundColor = UIColor.clearColor();
-        btnLight.setTitle("开启闪光灯", forState: .Normal);
-        btnLight.titleLabel?.font = UIFont.systemFontOfSize(11.0);
-        btnLight.setTitleColor(UIColor.whiteColor(), forState: .Normal);
-        btnLight.addTarget(self, action: #selector(MCMachineCodeViewController.turnOnLight), forControlEvents: .TouchUpInside);
+        btnLight.backgroundColor = UIColor.clear;
+        btnLight.setTitle("开启闪光灯", for: UIControlState());
+        btnLight.titleLabel?.font = UIFont.systemFont(ofSize: 11.0);
+        btnLight.setTitleColor(UIColor.white, for: UIControlState());
+        btnLight.addTarget(self, action: #selector(MCMachineCodeViewController.turnOnLight), for: .touchUpInside);
         self.view.addSubview(btnLight);
         
-        let contraint5 = NSLayoutConstraint(item: btnLight, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 3.0, constant: 60.0);
+        let contraint5 = NSLayoutConstraint(item: btnLight, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 3.0, constant: 60.0);
         
         let contraint6 = NSLayoutConstraint(item: btnLight,
-                                            attribute: NSLayoutAttribute.Top,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.top,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Top,
+                                            attribute: NSLayoutAttribute.top,
                                             multiplier: 1.0,
                                             constant: 500.0)
         let contraint7 = NSLayoutConstraint(item: btnLight,
-                                            attribute: NSLayoutAttribute.Width,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.width,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 100)
         let contraint8 = NSLayoutConstraint(item: btnLight,
-                                            attribute: NSLayoutAttribute.Height,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.height,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 50.0)
         self.view.addConstraints([contraint5,contraint6,contraint7,contraint8])
         
         let btnCode = UIButton();
         btnCode.translatesAutoresizingMaskIntoConstraints = false;
-        btnCode.backgroundColor = UIColor.clearColor();
-        btnCode.setTitle("输入编码", forState: .Normal);
-        btnCode.titleLabel?.font = UIFont.systemFontOfSize(11.0);
-        btnCode.setTitleColor(UIColor.whiteColor(), forState: .Normal);
-        btnCode.addTarget(self, action: #selector(MCMachineCodeViewController.pushToPutinVC), forControlEvents: .TouchUpInside);
+        btnCode.backgroundColor = UIColor.clear;
+        btnCode.setTitle("输入编码", for: UIControlState());
+        btnCode.titleLabel?.font = UIFont.systemFont(ofSize: 11.0);
+        btnCode.setTitleColor(UIColor.white, for: UIControlState());
+        btnCode.addTarget(self, action: #selector(MCMachineCodeViewController.pushToPutinVC), for: .touchUpInside);
         self.view.addSubview(btnCode);
         
-        let contraint9 = NSLayoutConstraint(item: btnCode, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 3.0, constant: 120.0);
+        let contraint9 = NSLayoutConstraint(item: btnCode, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 3.0, constant: 120.0);
         
         let contraint10 = NSLayoutConstraint(item: btnCode,
-                                            attribute: NSLayoutAttribute.Top,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.top,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self.view,
-                                            attribute: NSLayoutAttribute.Top,
+                                            attribute: NSLayoutAttribute.top,
                                             multiplier: 1.0,
                                             constant: 500.0)
         let contraint11 = NSLayoutConstraint(item: btnCode,
-                                            attribute: NSLayoutAttribute.Width,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.width,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 100)
         let contraint12 = NSLayoutConstraint(item: btnCode,
-                                            attribute: NSLayoutAttribute.Height,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.height,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: nil,
-                                            attribute: NSLayoutAttribute.NotAnAttribute,
+                                            attribute: NSLayoutAttribute.notAnAttribute,
                                             multiplier: 1.0,
                                             constant: 50.0)
         self.view.addConstraints([contraint9,contraint10,contraint11,contraint12])
@@ -237,11 +237,11 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         
         if let _ = self.navigationController {
             
-            self.navigationController?.popViewControllerAnimated(false)
+            self.navigationController?.popViewController(animated: false)
         }
         else {
             
-            self.dismissViewControllerAnimated(false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
         }
     }
     
@@ -252,7 +252,7 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
             try defaultDevice.lockForConfiguration()
             
             let current = defaultDevice.torchMode
-            defaultDevice.torchMode = AVCaptureTorchMode.On == current ? .Off : .On;
+            defaultDevice.torchMode = AVCaptureTorchMode.on == current ? .off : .on;
             
             defaultDevice.unlockForConfiguration()
         }
@@ -266,7 +266,7 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         self.navigationController?.pushViewController(vc, animated: true);
     }
     
-    func didDectectionCode(code: String) {
+    func didDectectionCode(_ code: String) {
 
         if self.isGetCode {
             
@@ -281,7 +281,7 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
         
         if let _ = self.didGetMachineCode {
             
-            self.didGetMachineCode!(code: code)
+            self.didGetMachineCode!(code)
         }
         // play down sound
         playSound()
@@ -290,13 +290,13 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
 
     func playSound() {
         
-        let path = NSBundle.mainBundle().pathForResource("qrcode_found", ofType: "wav")
+        let path = Bundle.main.path(forResource: "qrcode_found", ofType: "wav")
         
         if let path = path {
             
             var soundID: SystemSoundID = 0
-            let soundURL = NSURL(fileURLWithPath: path)
-            AudioServicesCreateSystemSoundID(soundURL, &soundID)
+            let soundURL = URL(fileURLWithPath: path)
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundID)
             
             AudioServicesPlayAlertSound(soundID)
         }
@@ -304,13 +304,13 @@ public class MCMachineCodeViewController: UIViewController,MCPreviewViewDelegate
    
     }
     
-    func setupNavWithIsHideNav(hideNav: Bool) {
+    func setupNavWithIsHideNav(_ hideNav: Bool) {
         
         if let nav = self.navigationController {
             
-            nav.navigationBar.hidden = hideNav
+            nav.navigationBar.isHidden = hideNav
 
-            UIApplication.sharedApplication().setStatusBarStyle(hideNav == true ? UIStatusBarStyle.LightContent : self.statusBarStyle, animated: false)
+            UIApplication.shared.setStatusBarStyle(hideNav == true ? UIStatusBarStyle.lightContent : self.statusBarStyle, animated: false)
         }
     }
     

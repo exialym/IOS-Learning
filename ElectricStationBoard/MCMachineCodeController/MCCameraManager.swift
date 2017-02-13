@@ -12,10 +12,10 @@ import AVFoundation
 
 protocol MCCodeDetectionDelegate: NSObjectProtocol {
     
-    func didDetectCodes(codes: [AnyObject])
+    func didDetectCodes(_ codes: [AnyObject])
 }
 
-public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjectsDelegate {
+open class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjectsDelegate {
     
     var metadataOutput: AVCaptureMetadataOutput!
     weak var codeDelegate: MCCodeDetectionDelegate?
@@ -34,7 +34,7 @@ public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjects
         if success {
             
             // can support auto focus
-            if self.activeCamera().autoFocusRangeRestrictionSupported {
+            if self.activeCamera().isAutoFocusRangeRestrictionSupported {
                 
                 do {
                     
@@ -47,7 +47,7 @@ public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjects
                 
                 if let _ = er {
                     
-                    self.activeCamera().autoFocusRangeRestriction = AVCaptureAutoFocusRangeRestriction.Near
+                    self.activeCamera().autoFocusRangeRestriction = AVCaptureAutoFocusRangeRestriction.near
                     
                     self.activeCamera().unlockForConfiguration()
                 }
@@ -67,7 +67,7 @@ public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjects
             
             self.captureSession.addOutput(self.metadataOutput)
             
-            let mainQueue = dispatch_get_main_queue()
+            let mainQueue = DispatchQueue.main
             
             self.metadataOutput.setMetadataObjectsDelegate(self, queue: mainQueue)
             
@@ -89,7 +89,7 @@ public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjects
         else {
             
             outputError = NSError(domain: MCCameraErrorDomain,
-                                 code:MCCameraErrorCode.FailedToAddOutput.rawValue ,
+                                 code:MCCameraErrorCode.failedToAddOutput.rawValue ,
                                  userInfo: [NSLocalizedDescriptionKey:"Failed to still image output."])
             return (false,outputError)
         }
@@ -98,11 +98,11 @@ public class MCCameraManager: MCBaseCameraManager,AVCaptureMetadataOutputObjects
     }
     
     // metadata obj delegate
-    public func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         if let _ = self.codeDelegate {
             
-            self.codeDelegate!.didDetectCodes(metadataObjects)
+            self.codeDelegate!.didDetectCodes(metadataObjects as [AnyObject])
         }
         
     }

@@ -18,11 +18,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBarHidden = false;
+        self.navigationController?.isNavigationBarHidden = false;
     }
 
   //登录按钮方法
-    @IBAction func loginBT(sender: AnyObject) {
+    @IBAction func loginBT(_ sender: AnyObject) {
         print("登录成功");
         //假设验证码为1234
         let verifyNo = 1234;
@@ -32,15 +32,15 @@ class LoginViewController: UIViewController {
         //对用户信息进行验证
         if Int(password!) == verifyNo {
             //获取userDefaults
-            let userDefault = NSUserDefaults.standardUserDefaults();
+            let userDefault = UserDefaults.standard;
             //登录成功后将用户名和密码存到userdefault
-            userDefault.setObject(userName, forKey: "name");
-            userDefault.setObject(password, forKey: "password");
+            userDefault.set(userName, forKey: "name");
+            userDefault.set(password, forKey: "password");
             userDefault.synchronize();
             //跳转到之前页面
             let story = UIStoryboard(name: "Main", bundle: nil);
-            let vc3 = story.instantiateViewControllerWithIdentifier("me");
-            self.showViewController(vc3, sender: self);
+            let vc3 = story.instantiateViewController(withIdentifier: "me");
+            self.show(vc3, sender: self);
             
             
         }else {

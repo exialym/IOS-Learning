@@ -11,19 +11,19 @@ import AVFoundation
 
 protocol MCPreviewViewDelegate : NSObjectProtocol {
     
-    func didDectectionCode(code: String)
+    func didDectectionCode(_ code: String)
 
     
 }
 
-public class MCPreviewView: UIView,MCCodeDetectionDelegate {
+open class MCPreviewView: UIView,MCCodeDetectionDelegate {
     
     var codeLayers: NSMutableDictionary!
     weak var delegate: MCPreviewViewDelegate?
 
     
-    private var lineType: LineType = LineType.Grid
-    private var moveType: MoveType = MoveType.Default
+    fileprivate var lineType: LineType = LineType.grid
+    fileprivate var moveType: MoveType = MoveType.default
     
     var session: AVCaptureSession {
         
@@ -39,7 +39,7 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     
     init(lineType: LineType , moveType: MoveType) {
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         self.lineType = lineType
         self.moveType = moveType
@@ -51,7 +51,7 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         configurePreviewLayer()
         setupOverlayView()
@@ -66,13 +66,13 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     }
     
     // override return layer
-    override public class func layerClass() -> AnyClass {
+    override open class var layerClass : AnyClass {
         
         return AVCaptureVideoPreviewLayer.self
     }
     
     // private layer
-    private var previewLayer: AVCaptureVideoPreviewLayer  {
+    fileprivate var previewLayer: AVCaptureVideoPreviewLayer  {
         
         get {
             
@@ -89,31 +89,31 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
         self.addSubview(self.overlayView)
         
         let contraint1 = NSLayoutConstraint(item: self.overlayView,
-                                            attribute: NSLayoutAttribute.Left,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.left,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self,
-                                            attribute: NSLayoutAttribute.Left,
+                                            attribute: NSLayoutAttribute.left,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint2 = NSLayoutConstraint(item: self.overlayView,
-                                            attribute: NSLayoutAttribute.Right,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.right,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self,
-                                            attribute: NSLayoutAttribute.Right,
+                                            attribute: NSLayoutAttribute.right,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint3 = NSLayoutConstraint(item: self.overlayView,
-                                            attribute: NSLayoutAttribute.Top,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.top,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self,
-                                            attribute: NSLayoutAttribute.Top,
+                                            attribute: NSLayoutAttribute.top,
                                             multiplier: 1.0,
                                             constant: 0.0)
         let contraint4 = NSLayoutConstraint(item: self.overlayView,
-                                            attribute: NSLayoutAttribute.Bottom,
-                                            relatedBy: NSLayoutRelation.Equal,
+                                            attribute: NSLayoutAttribute.bottom,
+                                            relatedBy: NSLayoutRelation.equal,
                                             toItem: self,
-                                            attribute: NSLayoutAttribute.Bottom,
+                                            attribute: NSLayoutAttribute.bottom,
                                             multiplier: 1.0,
                                             constant: 0.0)
         self.addConstraints([contraint1,contraint2,contraint3,contraint4])
@@ -126,7 +126,7 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     }
     
     // Code Detection Delegate
-    func didDetectCodes(codes: [AnyObject]) {
+    func didDetectCodes(_ codes: [AnyObject]) {
         
         let trandformedCodes = transformedCodesFromCodes(codes)
         
@@ -136,8 +136,8 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
 
             if let code = (code as? AVMetadataMachineReadableCodeObject) {
                 
-                let path = bezierPathForCorners(code.corners)
-                if self.overlayView.scanRect.contains(CGPointMake(path.bounds.origin.x + path.bounds.size.width / 2, path.bounds.origin.y - path.bounds.size.height / 2)) == false {
+                let path = bezierPathForCorners(code.corners as [AnyObject])
+                if self.overlayView.scanRect.contains(CGPoint(x: path.bounds.origin.x + path.bounds.size.width / 2, y: path.bounds.origin.y - path.bounds.size.height / 2)) == false {
                 
                     break
                 }
@@ -145,7 +145,7 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
                
                 if self.delegate != nil {
                     
-                    self.delegate!.didDectectionCode(stringValue)
+                    self.delegate!.didDectectionCode(stringValue!)
                 }
                 
                 break
@@ -186,25 +186,25 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     }
     
     // Device coordinates  ->   View coordinates
-    func transformedCodesFromCodes(codes: [AnyObject]) -> [AnyObject] {
+    func transformedCodesFromCodes(_ codes: [AnyObject]) -> [AnyObject] {
         
         var transformedCodes: [AnyObject] = Array()
         
         for code in codes as! [AVMetadataObject] {
             
-            let transformedCode = self.previewLayer.transformedMetadataObjectForMetadataObject(code)
-            transformedCodes.append(transformedCode)
+            let transformedCode = self.previewLayer.transformedMetadataObject(for: code)
+            transformedCodes.append(transformedCode!)
         }
         
         return transformedCodes
     }
     
-    func bezierPathForBounds(bounds: CGRect) -> UIBezierPath {
+    func bezierPathForBounds(_ bounds: CGRect) -> UIBezierPath {
         
         return UIBezierPath(rect: bounds)
     }
     
-    func bezierPathForCorners(corners: [AnyObject]) -> UIBezierPath {
+    func bezierPathForCorners(_ corners: [AnyObject]) -> UIBezierPath {
         
         let path = UIBezierPath()
         
@@ -213,24 +213,24 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
             let point = pointForCorner(corners[i] as! NSDictionary)
             if i == 0 {
                 
-                path.moveToPoint(point)
+                path.move(to: point)
             }
             else {
                 
-                path.addLineToPoint(point)
+                path.addLine(to: point)
             }
         }
         
-        path.closePath()
+        path.close()
         return path
     }
     
-    func pointForCorner(corner: NSDictionary) -> CGPoint {
+    func pointForCorner(_ corner: NSDictionary) -> CGPoint {
         
-        var point = CGPointZero
+        var point = CGPoint.zero
         
         do {
-            point =  CGPointMake(corner["X"] as! CGFloat, corner["Y"] as! CGFloat)
+            point =  CGPoint(x: corner["X"] as! CGFloat, y: corner["Y"] as! CGFloat)
         }
 
         return point
@@ -239,7 +239,7 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     func makeBoundsLayer() -> CAShapeLayer {
         
         let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor(red: 0.95, green: 0.75, blue: 0.06, alpha: 1.0).CGColor
+        shapeLayer.strokeColor = UIColor(red: 0.95, green: 0.75, blue: 0.06, alpha: 1.0).cgColor
         shapeLayer.fillColor = nil
         shapeLayer.lineWidth = 4
         return shapeLayer
@@ -248,8 +248,8 @@ public class MCPreviewView: UIView,MCCodeDetectionDelegate {
     func makeCornersLayer() -> CAShapeLayer {
         
         let conersLayer = CAShapeLayer()
-        conersLayer.strokeColor = UIColor(red: 0.172, green: 0.671, blue: 0.428, alpha: 1.0).CGColor
-        conersLayer.fillColor = UIColor(red: 0.190, green: 0.753, blue: 0.489, alpha: 1.0).CGColor
+        conersLayer.strokeColor = UIColor(red: 0.172, green: 0.671, blue: 0.428, alpha: 1.0).cgColor
+        conersLayer.fillColor = UIColor(red: 0.190, green: 0.753, blue: 0.489, alpha: 1.0).cgColor
         conersLayer.lineWidth = 2
         return conersLayer
     }

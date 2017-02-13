@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class userFunc: NSObject {
+open class userFunc: NSObject {
     
 
 }

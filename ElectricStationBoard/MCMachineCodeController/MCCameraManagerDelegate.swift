@@ -10,8 +10,8 @@ import UIKit
 
 protocol MCCameraManagerDelegate : NSObjectProtocol {
     
-    func deviceConfigurationFailedWithError(error: NSError?)
-    func mediaCaptureFailedWithError(error: NSError?)
-    func assetLibraryWriteFailedWithError(error: NSError?)
+    func deviceConfigurationFailedWithError(_ error: NSError?)
+    func mediaCaptureFailedWithError(_ error: NSError?)
+    func assetLibraryWriteFailedWithError(_ error: NSError?)
    
 }

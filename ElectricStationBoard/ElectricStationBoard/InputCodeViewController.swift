@@ -9,13 +9,13 @@
 import UIKit
 
 class InputCodeViewController: UIViewController {
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false;
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false;
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor();
+        self.view.backgroundColor = UIColor.white;
         self.setTextFieldAndButton();
 //        if self.navigationController == nil {
 //            self.backBt();
@@ -30,17 +30,17 @@ class InputCodeViewController: UIViewController {
         
         let codeTF = UITextField();
         codeTF.placeholder = "请输入充电桩编码";
-        codeTF.frame = CGRectMake(50, 100, 250, 40);
-        codeTF.borderStyle = .RoundedRect;
+        codeTF.frame = CGRect(x: 50, y: 100, width: 250, height: 40);
+        codeTF.borderStyle = .roundedRect;
         self.view.addSubview(codeTF);
         
-        let btn = UIButton(type: .System);
-        btn.frame = CGRectMake(100, 150, 80, 30);
-        btn.setTitle("确定", forState: .Normal);
-        btn.setTitleColor(UIColor.whiteColor(), forState: .Normal);
-        btn.backgroundColor = UIColor.orangeColor();
+        let btn = UIButton(type: .system);
+        btn.frame = CGRect(x: 100, y: 150, width: 80, height: 30);
+        btn.setTitle("确定", for: UIControlState());
+        btn.setTitleColor(UIColor.white, for: UIControlState());
+        btn.backgroundColor = UIColor.orange;
         btn.layer.cornerRadius = 8.0;
-        btn.addTarget(self, action: #selector(InputCodeViewController.sureBt), forControlEvents: .TouchUpInside);
+        btn.addTarget(self, action: #selector(InputCodeViewController.sureBt), for: .touchUpInside);
         self.view.addSubview(btn);
         
     }

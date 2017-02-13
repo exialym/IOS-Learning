@@ -14,30 +14,30 @@ class PayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBarHidden = false;
-        self.view.backgroundColor = UIColor.whiteColor();
+        self.navigationController?.isNavigationBarHidden = false;
+        self.view.backgroundColor = UIColor.white;
         
     }
 
     //tableView
     
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1;
     }
     
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("reuseID");
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCell(withIdentifier: "reuseID");
     if cell == nil {
         
-        cell = UITableViewCell(style: .Default, reuseIdentifier: "reuseID");
+        cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID");
     }
     let image = UIImage(named: "logo_alipay@2x.png");
         cell!.imageView?.image = image;
-        cell!.userInteractionEnabled = true;
+        cell!.isUserInteractionEnabled = true;
         
         return cell!;
     }

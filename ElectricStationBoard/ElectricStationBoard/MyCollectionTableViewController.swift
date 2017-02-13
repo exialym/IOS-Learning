@@ -15,7 +15,7 @@ class MyCollectionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false;
+        self.navigationController?.isNavigationBarHidden = false;
         
         
             }
@@ -27,40 +27,40 @@ class MyCollectionTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         
         return 2;
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1;
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
         
         cell.imageView?.image = UIImage(named: "me_charging_list_pls@2x.png");
 
         //titleLabel
         titleLabel = UILabel();
-        titleLabel?.frame = CGRectMake(100, 3, 300, 20);
+        titleLabel?.frame = CGRect(x: 100, y: 3, width: 300, height: 20);
         titleLabel?.text = "4个快速充电桩,0个慢速充电桩,00:00-24:00";
         titleLabel?.font = UIFont(name: "Helvetica", size: 11);
         cell.contentView.addSubview(titleLabel!);
         //companyLabel
         companyLabel = UILabel();
-        companyLabel?.frame = CGRectMake(130, 70, 300, 20);
+        companyLabel?.frame = CGRect(x: 130, y: 70, width: 300, height: 20);
         companyLabel?.text = "由北京电力公司运营";
-        companyLabel?.textColor = UIColor.grayColor();
+        companyLabel?.textColor = UIColor.gray;
         companyLabel?.font = UIFont(name: "Helvetica", size: 11);
         cell.contentView.addSubview(companyLabel!);
         //companyImage
         companyImage = UIImageView();
-        companyImage?.frame = CGRectMake(100, 70, 18, 18);
+        companyImage?.frame = CGRect(x: 100, y: 70, width: 18, height: 18);
         companyImage?.image = UIImage(named: "carr_guowang_hl@2x.png");
         cell.contentView.addSubview(companyImage!);
 
@@ -68,11 +68,11 @@ class MyCollectionTableViewController: UITableViewController {
     }
  
     //设置cell的高度
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0;
     }
     //设置cell的header
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30;
     }
 //    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -84,18 +84,18 @@ class MyCollectionTableViewController: UITableViewController {
 //       
 //    }
 
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let myView = UIView();
-        myView.backgroundColor = UIColor.whiteColor();
-        var label = UILabel();
+        myView.backgroundColor = UIColor.white;
+        let label = UILabel();
         label.text = "海淀区鼎好电子商务公共充电点";
         label.font = UIFont(name: "Helvetica", size: 15);
-        label.frame = CGRectMake(10, 0, 250, 22);
+        label.frame = CGRect(x: 10, y: 0, width: 250, height: 22);
         myView.addSubview(label);
         
-        let button = UIButton(type: .System);
-        button.setBackgroundImage(UIImage(named: "g_delete_nor@2x.png"), forState: .Normal);
-        button.frame = CGRectMake(340, 3, 18, 20);
+        let button = UIButton(type: .system);
+        button.setBackgroundImage(UIImage(named: "g_delete_nor@2x.png"), for: UIControlState());
+        button.frame = CGRect(x: 340, y: 3, width: 18, height: 20);
         myView.addSubview(button);
         
         
@@ -107,54 +107,54 @@ class MyCollectionTableViewController: UITableViewController {
     
     //footerInSection
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return 30;
     }
     
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "空闲";
     }
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let myView = UIView();
         myView.backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, alpha: 0);
-        var image = UIImageView();
-        image.frame = CGRectMake(10, 6, 15, 15);
+        let image = UIImageView();
+        image.frame = CGRect(x: 10, y: 6, width: 15, height: 15);
         image.image = UIImage(named: "icon_free@2x.png");
         myView.addSubview(image);
         
-        var label1 = UILabel();
-        label1.frame = CGRectMake(30, 5, 40, 20);
+        let label1 = UILabel();
+        label1.frame = CGRect(x: 30, y: 5, width: 40, height: 20);
         label1.text = "空闲";
         label1.font = UIFont(name: "Helvetica", size: 10);
-        label1.textColor = UIColor.blackColor();
+        label1.textColor = UIColor.black;
         myView.addSubview(label1);
         
-        var label2 = UILabel();
-        label2.frame = CGRectMake(250, 10, 5, 10);
+        let label2 = UILabel();
+        label2.frame = CGRect(x: 250, y: 10, width: 5, height: 10);
         label2.text = "1";
         label2.font = UIFont(name: "Helvetica", size: 11);
-        label2.textColor = UIColor.orangeColor();
+        label2.textColor = UIColor.orange;
         myView.addSubview(label2);
         
-        var label3 = UILabel();
-        label3.frame = CGRectMake(259, 5, 40, 20)
+        let label3 = UILabel();
+        label3.frame = CGRect(x: 259, y: 5, width: 40, height: 20)
         label3.text = "个快桩,";
-        label3.textColor = UIColor.grayColor();
+        label3.textColor = UIColor.gray;
         label3.font = UIFont(name: "Helvetica", size: 10);
         myView.addSubview(label3);
         
-        var label4 = UILabel();
-        label4.frame = CGRectMake(300, 10, 5, 10);
+        let label4 = UILabel();
+        label4.frame = CGRect(x: 300, y: 10, width: 5, height: 10);
         label4.text = "2";
-        label4.textColor = UIColor.orangeColor();
+        label4.textColor = UIColor.orange;
         label4.font = UIFont(name: "Helvetica", size: 11);
         myView.addSubview(label4);
         
-        var label5 = UILabel();
-        label5.frame = CGRectMake(310, 10, 40, 10);
+        let label5 = UILabel();
+        label5.frame = CGRect(x: 310, y: 10, width: 40, height: 10);
         label5.text = "个慢桩";
-        label5.textColor = UIColor.grayColor();
+        label5.textColor = UIColor.gray;
         label5.font = UIFont(name: "Helvetica", size: 10);
         myView.addSubview(label5);
         

@@ -16,14 +16,14 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
 
     
     @IBOutlet var photoTapRecognizer: UITapGestureRecognizer!
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.navigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = true;
         //判断用户是否登录
-        let userDefault = NSUserDefaults.standardUserDefaults();
-        let name = userDefault.objectForKey("name");
+        let userDefault = UserDefaults.standard;
+        let name = userDefault.object(forKey: "name");
         //用户登录后
-        if name !== nil {
+        if name != nil {
             //更改用户名称
             self.showUserName();
             photoTapRecognizer.addTarget(self, action: #selector(MeViewController.editAlert));
@@ -45,7 +45,7 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = true;
 
         
     }
@@ -53,26 +53,26 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
 
     
     //头像未登录
-    func photoSet(imageName:String) ->UIImageView {
+    func photoSet(_ imageName:String) ->UIImageView {
         
-        var img = UIImage(named: imageName);
+        let img = UIImage(named: imageName);
     
         //用设置圆角的方法设置圆形
-        photo.backgroundColor = UIColor.whiteColor();
-        photo.layer.cornerRadius = CGRectGetHeight(photo.bounds)/2;
+        photo.backgroundColor = UIColor.white;
+        photo.layer.cornerRadius = photo.bounds.height/2;
         //设置photo的外围原框
         photo.layer.masksToBounds = true;
-        photo.layer.borderColor = UIColor.grayColor().CGColor;
+        photo.layer.borderColor = UIColor.gray.cgColor;
         photo.image = img;
         return photo;
         
     }
     //显示用户名称
     func showUserName() ->Void {
-        let userDefault = NSUserDefaults.standardUserDefaults();
-        let name = userDefault.objectForKey("name");
-        if name !== nil {
-        nameLabel.text = String(name!);
+        let userDefault = UserDefaults.standard;
+        let name = userDefault.object(forKey: "name");
+        if name != nil {
+        nameLabel.text = String(describing: name!);
         }else{
             nameLabel.text = "登录/注册";
         }
@@ -91,13 +91,13 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     func pushLoginVC() ->Void {
    
-        self.performSegueWithIdentifier("toLogin", sender: self);
+        self.performSegue(withIdentifier: "toLogin", sender: self);
     }
     //注销登录
-    @IBAction func logout(sender: AnyObject) {
-        let userDefault = NSUserDefaults.standardUserDefaults();
-        userDefault.removeObjectForKey("name");
-        userDefault.removeObjectForKey("password");
+    @IBAction func logout(_ sender: AnyObject) {
+        let userDefault = UserDefaults.standard;
+        userDefault.removeObject(forKey: "name");
+        userDefault.removeObject(forKey: "password");
         userDefault.synchronize();
         let alert = UIAlertView.init(title: "注销登录", message: "确认退出?", delegate: self, cancelButtonTitle: "确定");
         alert.show();
@@ -105,17 +105,17 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         
     }
     //设置tableView
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("reuseID");
+        var cell = tableView.dequeueReusableCell(withIdentifier: "reuseID");
         if cell == nil {
             
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "reuseID");
+            cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID");
         }
         //cell前面的小图片
         let img1 = UIImage(named: "me_money@2x.png");
@@ -124,16 +124,16 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         let img4 = UIImage(named: "me_setting@2x.png");
         
         var picArr = [img1!,img2!,img3!,img4!];
-        cell?.imageView?.image = picArr[indexPath.row];
+        cell?.imageView?.image = picArr[(indexPath as NSIndexPath).row];
         //cell的标题
         let title1 = "支付方式";
         let title2 = "我的收藏";
         let title3 = "充电记录";
         let title4 = "设置";
         var titleName = [title1,title2,title3,title4];
-        cell?.textLabel?.text = titleName[indexPath.row];
-        cell?.accessoryType = .DisclosureIndicator;
-        cell?.userInteractionEnabled = true;
+        cell?.textLabel?.text = titleName[(indexPath as NSIndexPath).row];
+        cell?.accessoryType = .disclosureIndicator;
+        cell?.isUserInteractionEnabled = true;
         
         return cell!;
         
@@ -141,38 +141,38 @@ class MeViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     //选择tableview cell跳转相应界面
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //判断用户是否登录
-        let userDefault = NSUserDefaults.standardUserDefaults();
-        let name = userDefault.objectForKey("name");
+        let userDefault = UserDefaults.standard;
+        let name = userDefault.object(forKey: "name");
         if name != nil {
         //已有用户登录情况
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
             
         case 0:
-            self.performSegueWithIdentifier("pay", sender: self);
+            self.performSegue(withIdentifier: "pay", sender: self);
         case 1:
-            self.performSegueWithIdentifier("collection", sender: self);
+            self.performSegue(withIdentifier: "collection", sender: self);
         case 2:
-            self.performSegueWithIdentifier("record", sender: self);
+            self.performSegue(withIdentifier: "record", sender: self);
         case 3:
-            self.performSegueWithIdentifier("setting", sender: self);
+            self.performSegue(withIdentifier: "setting", sender: self);
         default:
             break;
         }
         }else {
             //未有用户登录情况
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
                 
             case 0:
-                self.performSegueWithIdentifier("toLogin", sender: self);
+                self.performSegue(withIdentifier: "toLogin", sender: self);
             case 1:
-                self.performSegueWithIdentifier("toLogin", sender: self);
+                self.performSegue(withIdentifier: "toLogin", sender: self);
             case 2:
-                self.performSegueWithIdentifier("toLogin", sender: self);
+                self.performSegue(withIdentifier: "toLogin", sender: self);
             case 3:
-                self.performSegueWithIdentifier("toLogin", sender: self);
+                self.performSegue(withIdentifier: "toLogin", sender: self);
             default:
                 break;
             }
